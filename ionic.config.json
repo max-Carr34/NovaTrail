@@ -1,0 +1,7 @@
+{
+  "name": "Panel-CP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

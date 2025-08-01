@@ -1,0 +1,309 @@
+/* ===== ADMIN DASHBOARD CSS - ELEGANT BLUE & WHITE THEME ===== */
+
+/* Header Styling */
+.custom-header {
+  --background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  --color: white;
+  box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.custom-header ion-toolbar {
+  --background: transparent;
+  --color: white;
+  padding: 8px 16px;
+}
+
+.custom-header ion-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+}
+
+.login-btn {
+  --background: rgba(255, 255, 255, 0.15);
+  --color: white;
+  --border-radius: 25px;
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  --background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  --box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* User Management Button */
+.custom-header ion-button[color="secondary"] {
+  --background: linear-gradient(45deg, #0f172a, #1e293b);
+  --color: white;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+  margin-left: auto;
+  transition: all 0.3s ease;
+}
+
+.custom-header ion-button[color="secondary"]:hover {
+  --background: linear-gradient(45deg, #1e293b, #334155);
+  transform: translateY(-2px);
+  --box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Content Styling */
+.fade-image-content {
+  --background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.background-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.background-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.08;
+  filter: blur(1px);
+}
+
+.main-content {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(248, 250, 252, 0.95) 0%,
+    rgba(241, 245, 249, 0.9) 50%,
+    rgba(226, 232, 240, 0.85) 100%
+  );
+  backdrop-filter: blur(20px);
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Welcome Section */
+.welcome-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(30, 58, 138, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.welcome-section h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 8px rgba(30, 58, 138, 0.1);
+}
+
+.welcome-section p {
+  font-size: 1.2rem;
+  color: #475569;
+  font-weight: 500;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.feature-card-link:hover {
+  transform: translateY(-8px);
+}
+
+.feature-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 10px 40px rgba(30, 58, 138, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+.feature-card:hover {
+  box-shadow: 0 20px 60px rgba(30, 58, 138, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  text-align: center;
+  filter: drop-shadow(0 4px 8px rgba(30, 58, 138, 0.2));
+}
+
+.feature-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.feature-description {
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem 0.5rem;
+  }
+  
+  .welcome-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .welcome-section h1 {
+    font-size: 2rem;
+  }
+  
+  .welcome-section p {
+    font-size: 1.1rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .feature-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .custom-header ion-toolbar {
+    padding: 8px 12px;
+  }
+  
+  .custom-header ion-title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-section h1 {
+    font-size: 1.8rem;
+  }
+  
+  .welcome-section p {
+    font-size: 1rem;
+  }
+  
+  .feature-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+  }
+  
+  .feature-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feature-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.1s; }
+.feature-card:nth-child(2) { animation-delay: 0.2s; }
+.feature-card:nth-child(3) { animation-delay: 0.3s; }
+.feature-card:nth-child(4) { animation-delay: 0.4s; }
+.feature-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+}

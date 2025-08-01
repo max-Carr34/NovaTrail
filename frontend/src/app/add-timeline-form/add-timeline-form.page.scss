@@ -1,0 +1,270 @@
+:host {
+  --ion-background-color: #f0f2f5; /* Light grey background for the host */
+}
+
+/* --- Glassmorphism Base Styles --- */
+.glass-header,
+.glass-content,
+.glass-input,
+.glass-textarea,
+.glass-datetime,
+.glass-submit-btn {
+  backdrop-filter: blur(10px); /* Blur effect */
+  border-radius: 12px; /* Rounded corners */
+}
+
+/* Header */
+.glass-header {
+  padding: 10px 0;
+}
+
+/* Toolbar */
+.glass-toolbar {
+  --background: transparent;
+  --color: #e2e1e1; /* Slightly darker text for contrast */
+}
+
+/* Back button */
+.glass-back-btn {
+  --color: #fffcfc;
+}
+
+/* Title */
+.glass-title {
+  color: #e9e1e1;
+  font-weight: 600;
+}
+
+/* Content padding */
+.glass-content {
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+}
+
+/* Main card container */
+.main-card {
+  background: rgba(255, 255, 255, 0.7); /* Light transparent white */
+  border-radius: 18px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  padding: 25px;
+  margin: 0 auto;
+  max-width: 500px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card header */
+.card-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Icon container */
+.icon-container {
+  background: linear-gradient(45deg, #0d61e8, #acb4b8); /* Gradient background */
+  border-radius: 50%;
+  padding: 15px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Main icon */
+.main-icon {
+  font-size: 48px;
+  color: #fff; /* Keep white icon */
+}
+
+/* Titles */
+.card-title {
+  font-size: 1.8em;
+  color: #000000; /* Black text as you have */
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.card-subtitle {
+  color: #1e1e1e;
+  font-size: 0.95em;
+}
+
+/* --- Form Styles --- */
+.glass-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column; /* Apila verticalmente label y calendario */
+  margin-bottom: 15px;    /* Ya tenías este margen */
+}
+
+.field-label {
+  display: flex;
+  color: #000000; /* Black labels */
+  margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.field-icon {
+  margin-right: 8px;
+  color: #0db71b; /* Your green color */
+  font-size: 1.1em;
+}
+
+/* Inputs and textareas */
+.glass-input,
+.glass-textarea,
+.glass-datetime {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 1em;
+  color: #000000; /* Text black */
+  --placeholder-color: #000000;
+  --padding-start: 15px; /* Ionic-specific */
+  --padding-end: 15px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  background: rgba(255, 255, 255, 0.35); /* Add subtle glass bg */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Textarea resizing */
+.glass-textarea {
+  resize: vertical;
+  min-height: 50px;
+}
+
+/* Input focus with gentle blue glow */
+ion-input.glass-input.ion-focused,
+ion-textarea.glass-textarea.ion-focused,
+ion-datetime.glass-datetime {
+  max-width: 280px;  /* Opcional, limita ancho */
+  width: 100%;       /* Llena el espacio máximo permitido */
+  margin: 0 auto;    /* Centrado si es bloque */
+  display: block;    /* Para respetar margin auto */
+}
+
+/* Help text */
+.field-help {
+  color: #777;
+  font-size: 0.85em;
+  margin-top: 5px;
+  display: block;
+}
+
+/* --- Submit Button --- */
+.submit-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.glass-submit-btn {
+  --background: linear-gradient(45deg, #1060e1, #0d9adb);
+  --background-activated: linear-gradient(45deg, #8cb3f9, #aedaff);
+  --background-focused: linear-gradient(45deg, #0047cc, #aedaff);
+  --border-radius: 10px;
+  --box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1em;
+  padding: 15px 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.glass-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.glass-submit-btn[disabled] {
+  --background: #ccc;
+  --background-activated: #ccc;
+  --box-shadow: none;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Button content and shine effect */
+.btn-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-icon {
+  margin-right: 10px;
+  font-size: 1.3em;
+}
+
+.btn-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(223, 233, 224, 0.3);
+  transform: skewX(-50deg);
+  transition: all 0.7s ease;
+  z-index: 5;
+}
+
+.glass-submit-btn:not([disabled]):hover .btn-shine {
+  left: 100%;
+}
+
+/* Form info box */
+.form-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  font-size: 0.88em;
+  margin-top: 20px;
+  padding: 10px;
+  background: rgb(255, 255, 255);
+  border-radius: 8px;
+  border: 1px solid rgba(3, 3, 3, 0.968);
+}
+
+.form-info ion-icon {
+  margin-right: 8px;
+  color: #666;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .main-card {
+    margin: 0 15px;
+    padding: 20px;
+  }
+
+  .card-title {
+    font-size: 1.6em;
+  }
+
+  .main-icon {
+    font-size: 40px;
+  }
+
+  .glass-submit-btn {
+    font-size: 1em;
+    padding: 12px 15px;
+  }
+}

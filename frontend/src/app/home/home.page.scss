@@ -1,0 +1,645 @@
+/* ------------------------------------------------------------------
+  CSS COMPLETO SIMPLIFICADO PARA IONIC
+------------------------------------------------------------------ */
+
+/* 1. FONDO DE PANTALLA */
+.background-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.background-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7) contrast(1.2) saturate(1.1);
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.background-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.4) 0%,
+    rgba(15, 23, 42, 0.25) 20%,
+    rgba(15, 23, 42, 0.1) 50%,
+    rgba(248, 250, 252, 0.8) 80%,
+    #f8fafc 100%
+  );
+}
+
+/* 2. CONTENIDO PRINCIPAL */
+ion-content {
+  --background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  overflow-y: auto !important;
+}
+
+.page-wrapper {
+  margin-top: 10vh;
+  padding: 1.8rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 55vh;
+  position: relative;
+}
+
+/* 3. CONTENEDOR PRINCIPAL */
+.centered-container {
+  width: 100%;
+  max-width: 1200px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  animation: fadeIn 1s ease-out;
+  position: relative;
+  min-height: 300px;
+}
+
+.centered-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+}
+
+/* 4. CONTENEDORES IZQUIERDO Y DERECHO */
+.left-container {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-container {
+  flex: 0 0 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 5. SECCIONES INFORMATIVAS */
+.section {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.08),
+    0 3px 6px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #10b981, #059669);
+}
+
+.section h2,
+ion-card-title {
+  font-size: 1.6rem;
+  background: linear-gradient(135deg, #059669, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.section p,
+ion-card-content {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.7;
+  font-weight: 400;
+  flex-grow: 1;
+}
+
+/* 6. REDES SOCIALES - SECCIÓN FUNCIONAL */
+.social-media-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.social-media-section h4 {
+  margin-bottom: 15px;
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.social-icons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.social-icons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  margin: 0;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.social-button:hover {
+  transform: translateY(-3px) scale(1.1);
+  --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajuste para que los íconos sean visibles */
+.social-button ion-icon {
+  font-size: 24px;
+  color: white;
+}
+
+/* Colores específicos */
+.social-button.facebook { --background: #1877f2; }
+.social-button.instagram { --background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-button.tiktok { --background: #000000; }
+.social-button.youtube { --background: #ff0000; }
+.social-button.whatsapp { --background: #25d366; }
+.social-button.twitter { --background: #1da1f2; }
+
+.social-button.facebook:hover { --background: #1664d9; }
+.social-button.tiktok:hover { --background: #333333; }
+.social-button.youtube:hover { --background: #cc0000; }
+.social-button.whatsapp:hover { --background: #1faa52; }
+.social-button.twitter:hover { --background: #1a91da; }
+
+/* BOTONES DE CONTACTO */
+.contact-buttons-section {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-action-button {
+  --border-radius: 25px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  height: 44px !important;
+}
+
+.contact-action-button.whatsapp-btn {
+  --background: #25d366 !important;
+  --color: white !important;
+  --border-color: #25d366 !important;
+}
+
+.contact-action-button.whatsapp-btn:hover {
+  --background: #1faa52 !important;
+  transform: translateY(-2px) !important;
+  --box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3) !important;
+}
+
+.contact-action-button.email-btn {
+  --background: transparent !important;
+  --color: #3b82f6 !important;
+  --border-color: #3b82f6 !important;
+}
+
+.contact-action-button.email-btn:hover {
+  --background: #3b82f6 !important;
+  --color: white !important;
+  transform: translateY(-2px) !important;
+  --box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3) !important;
+}
+
+/* RESPONSIVE PARA REDES SOCIALES */
+@media (max-width: 768px) {
+  .social-icons-container {
+    gap: 12px;
+  }
+  
+  .social-button {
+    width: 45px !important;
+    height: 45px !important;
+  }
+  
+  .social-button ion-icon {
+    font-size: 18px !important;
+  }
+  
+  .social-media-section h4 {
+    font-size: 1rem;
+  }
+  
+  .contact-buttons-section {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-icons-container {
+    gap: 10px;
+  }
+  
+  .social-button {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  .social-button ion-icon {
+    font-size: 15px !important;
+  }
+}
+
+/* 7. BOTONES DE CONTACTO */
+.contact-buttons-section {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-btn {
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.whatsapp-btn {
+  background: #25d366;
+  color: white;
+  border-color: #25d366;
+}
+
+.whatsapp-btn:hover {
+  background: #1faa52;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+.email-btn {
+  background: transparent;
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.email-btn:hover {
+  background: #3b82f6;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* 8. BOTONES DE IONIC */
+ion-button.login-button,
+ion-button.register-button {
+  --background: transparent;
+  --color: #007bff;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-radius: 100px;
+  padding: 0.5rem 1.4rem;
+  height: auto;
+  border: 1px solid #007bff;
+  transition: all 0.2s ease-in-out;
+  --padding-start: 1.4rem;
+  --padding-end: 1.4rem;
+  --padding-top: 0.5rem;
+  --padding-bottom: 0.5rem;
+}
+
+ion-button.login-button:hover,
+ion-button.register-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --background: rgba(0, 123, 255, 0.05);
+}
+
+ion-button[fill="outline"] {
+  --border-color: #000000;
+  --color: #000000;
+  --background: transparent;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-radius: 100px;
+  padding: 0.5rem 1.4rem;
+  height: auto;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease-in-out;
+}
+
+ion-button[fill="outline"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  --background: rgba(0, 0, 0, 0.03);
+}
+
+/* 9. ENCABEZADO */
+.light-header {
+  --background: transparent !important;
+  box-shadow: none;
+}
+
+.light-header ion-toolbar {
+  --background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  --color: #1e293b !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-header ion-title {
+  font-weight: 800;
+  font-size: 1.4rem;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1e293b, #475569);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.03em;
+}
+
+/* 10. TARJETAS */
+ion-card {
+  margin: 0;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInUp 0.8s both;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+ion-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+ion-card img {
+  width: 100%;
+  height: 154px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  transition: transform 0.4s ease;
+}
+
+ion-card:hover img {
+  transform: scale(1.05);
+}
+
+ion-card-header { 
+  padding: 0.9rem 0.9rem 0.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.8));
+}
+
+ion-card-subtitle { 
+  font-size: 0.9rem; 
+  color: #64748b;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
+  gap: 1.8rem;
+  margin-top: 1.8rem;
+  padding: 0.7rem;
+}
+
+.cards-container ion-card {
+  max-width: 100%;
+  justify-self: center;
+}
+
+/* 11. ANIMACIONES */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px) scale(0.98); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(25px) rotateX(10deg); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) rotateX(0deg); 
+  }
+}
+
+/* 12. RESPONSIVE */
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 1.4rem 0.7rem;
+    margin-top: 21vh;
+  }
+  
+  .centered-container {
+    padding: 1.2rem;
+    border-radius: 14px;
+    flex-direction: column;
+  }
+  
+  .left-container,
+  .right-container {
+    flex: 1;
+  }
+  
+  .cards-container {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+    padding: 0.4rem;
+  }
+  
+  .section h2 {
+    font-size: 1rem;
+  }
+  
+  .social-icons-container {
+    gap: 12px;
+  }
+  
+  .social-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+  
+  .social-media-section h4 {
+    font-size: 1rem;
+  }
+  
+  .contact-buttons-section {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .centered-container {
+    padding: 1.1rem;
+    margin: 0 0.4rem;
+  }
+  
+  ion-card img { 
+    height: 112px; 
+  }
+  
+  .section {
+    padding: 0.9rem;
+  }
+  
+  ion-button.login-button,
+  ion-button.register-button,
+  ion-button[fill="outline"] {
+    font-size: 0.8rem;
+    padding: 0.6rem 1.5rem;
+  }
+  
+  .social-icons-container {
+    gap: 10px;
+  }
+  
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+/* Footer styles */
+.footer {
+  background-color: #2c2c2c;
+  color: #999;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  border-top: 3px solid #1a237e;
+  margin-top: 40px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-weight: 300;
+}
+
+.privacy-link {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #999;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 300;
+}
+
+.privacy-link:hover {
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 15px;
+  }
+  
+  .copyright,
+  .privacy-link {
+    font-size: 0.8rem;
+  }
+}
+
+/* Animación sutil */
+.footer {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

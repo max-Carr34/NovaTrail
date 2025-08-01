@@ -1,0 +1,126 @@
+<ion-header class="user-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" fill="clear" class="back-button">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>My Children</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="loadChildren()" class="refresh-button">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="titulo-usuario">
+    <h1>My Children</h1>
+    <p class="subtitulo">Here you can see all your registered kids</p>
+    
+    <div class="usuario-stats" *ngIf="children.length > 0">
+      <ion-icon name="people-outline"></ion-icon>
+      <span>{{ children.length }} Child{{ children.length !== 1 ? 'ren' : '' }} registered</span>
+    </div>
+  </div>
+
+  <div class="contenedor-usuario">
+    <div class="grid-mis-ninos" *ngIf="children.length > 0">
+      <div class="tarjeta-mi-nino" *ngFor="let child of children; let i = index" 
+           [style.animation-delay]="(i * 0.1) + 's'"
+           (click)="showChildDetails(child)">
+
+        <div class="header-tarjeta">
+          <div class="avatar-container">
+            <div class="avatar-nino">
+              {{ getInitials(child.first_name, child.last_name) }}
+            </div>
+            <div class="badge-genero" [class]="'badge-' + child.gender.toLowerCase()">
+              <ion-icon [name]="child.gender === 'Male' ? 'male' : 'female'"></ion-icon>
+            </div>
+          </div>
+
+          <div class="info-basica">
+            <h2>{{ child.first_name }}</h2>
+            <h3>{{ child.last_name }}</h3>
+            <span class="edad-badge">{{ calculateAge(child.birth_day, child.birth_month, child.birth_year) }} years old</span>
+          </div>
+        </div>
+
+        <div class="contenido-tarjeta">
+          <div class="detalle-item">
+            <div class="icono-detalle birthday-icon">
+              <ion-icon name="gift-outline"></ion-icon>
+            </div>
+            <div class="info-detalle">
+              <span class="label">Birthday</span>
+              <span class="valor">{{ formatBirthDate(child.birth_day, child.birth_month, child.birth_year) }}</span>
+            </div>
+          </div>
+
+          <div class="footer-tarjeta">
+            <div class="fecha-registro">
+              <ion-icon name="calendar-outline"></ion-icon>
+              <span>Recently registered</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CUSTOM STYLED BUTTONS -->
+        <div class="botones-accion">
+          <ion-button 
+            class="boton-expediente boton-con-icono" 
+            fill="clear"
+            (click)="goToMedicalInfo(child.id); $event.stopPropagation()">
+            <ion-icon name="document-text-outline" slot="start"></ion-icon>
+            View Medical Record
+          </ion-button>
+
+          <ion-button 
+            class="boton-registrar boton-con-icono" 
+            fill="clear"
+            (click)="goToMedicalForm(child.id); $event.stopPropagation()">
+            <ion-icon name="create-outline" slot="start"></ion-icon>
+            Register or Edit Record
+          </ion-button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="estado-sin-ninos" *ngIf="!isLoading && children.length === 0">
+      <div class="empty-illustration">
+        <ion-icon name="people-outline"></ion-icon>
+      </div>
+      <h3>You don't have any children registered yet!</h3>
+      <p>When you register your little ones, they will appear here so you can view all their information.</p>
+    </div>
+
+    <div class="estado-cargando" *ngIf="isLoading">
+      <ion-spinner name="dots" color="primary"></ion-spinner>
+      <p>Loading your children...</p>
+    </div>
+
+    <div class="estado-error" *ngIf="errorMsg">
+      <div class="error-icon">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+      </div>
+      <h3>Oops! Something went wrong</h3>
+      <p>{{ errorMsg }}</p>
+      <ion-button 
+        fill="outline" 
+        class="boton-reintentar"
+        (click)="loadChildren()">
+        <ion-icon name="refresh-outline" slot="start"></ion-icon>
+        Retry
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

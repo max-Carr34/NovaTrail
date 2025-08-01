@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" fill="clear">
+        <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Medical Records</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="search-section">
+    <ion-searchbar [(ngModel)]="searchTerm" placeholder="Search by child or parent name" debounce="500"></ion-searchbar>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-state ion-text-center">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Loading records...</p>
+  </div>
+
+  <ion-card *ngIf="errorMessage" class="error-card ion-text-center">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="alert-circle-outline"></ion-icon> Error
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ errorMessage }}</p>
+      <ion-button expand="block" fill="outline" (click)="retryLoad()">Retry</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="!isLoading && !errorMessage && filteredRecords.length > 0" class="records-grid">
+    <ion-card *ngFor="let record of filteredRecords; trackBy: trackById" class="record-card animated-card">
+      <ion-card-header>
+        <ion-card-title class="child-name">
+          <ion-icon name="person-circle-outline"></ion-icon> {{ record.childName }}
+          <span *ngIf="record.childAge" class="child-age">({{ record.childAge }} years old)</span>
+        </ion-card-title>
+        <ion-card-subtitle *ngIf="record.parentName">Parent: {{ record.parentName }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p *ngIf="record.hasDisability !== null && record.hasDisability !== undefined"
+           [class.disability-yes]="record.hasDisability"
+           [class.disability-no]="!record.hasDisability">
+          <ion-icon [name]="record.hasDisability ? 'accessibility-outline' : 'happy-outline'"></ion-icon>
+          Disability: {{ record.hasDisability ? 'Yes' : 'No' }}
+        </p>
+        <p *ngIf="record.createdAt" class="creation-date">
+          <ion-icon name="calendar-outline"></ion-icon> Created: {{ record.createdAt | date:'short' }}
+        </p>
+        <ion-button expand="block" fill="solid" class="view-detail-button" (click)="goToDetail(record.child_id)">
+          View Record
+          <ion-icon slot="end" name="arrow-forward-circle-outline"></ion-icon>
+        </ion-button>
+
+        <!-- DELETE BUTTON FOR ADMIN/STAFF ONLY -->
+        <ion-button fill="clear" color="danger" (click)="deleteRecord(record.child_id)" *hasRole="['admin', 'staff']" style="margin-top: 8px;">
+          <ion-icon slot="start" name="trash-outline"></ion-icon> Delete
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage && filteredRecords.length === 0" class="no-results ion-text-center">
+    <ion-icon name="search-outline"></ion-icon>
+    <p>No medical records match your search criteria.</p>
+    <ion-button fill="clear" (click)="searchTerm = ''">Clear Search</ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" fill="clear">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Contacts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="center-wrapper">
+    <div class="contact-container">
+
+      <ion-spinner *ngIf="loading" name="crescent" class="ion-margin-auto"></ion-spinner>
+
+      <div *ngIf="!loading && errorMsg" class="error-message ion-text-center">
+        {{ errorMsg }}
+      </div>
+
+      <div *ngIf="admins.length > 0">
+        <h2>Administrators</h2>
+        <ion-list>
+          <ion-item button *ngFor="let admin of admins" (click)="openChat(admin.id)" class="round-item">
+            <ion-avatar slot="start">
+              <ion-icon name="person-circle-outline" size="large"></ion-icon>
+            </ion-avatar>
+            <ion-label>
+              <h3>{{ admin.nombre }}</h3>
+              <p>{{ admin.rol | titlecase }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div *ngIf="staff.length > 0">
+        <h2>Staff</h2>
+        <ion-list>
+          <ion-item button *ngFor="let s of staff" (click)="openChat(s.id)" class="round-item">
+            <ion-avatar slot="start">
+              <ion-icon name="person-circle-outline" size="large"></ion-icon>
+            </ion-avatar>
+            <ion-label>
+              <h3>{{ s.nombre }}</h3>
+              <p>{{ s.rol | titlecase }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div *ngIf="!loading && admins.length === 0 && staff.length === 0" class="ion-text-center">
+        <p>No contacts available.</p>
+      </div>
+
+    </div>
+  </div>
+</ion-content>

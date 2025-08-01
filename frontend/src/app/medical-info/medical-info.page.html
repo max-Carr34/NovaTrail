@@ -1,0 +1,295 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Medical Record</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="medical-content">
+  <div class="medical-header">
+    <div class="header-content">
+      <div class="patient-icon">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </div>
+      <div class="header-info">
+        <h1>Medical Record</h1>
+        <p class="subtitle">Registered health information</p>
+      </div>
+    </div>
+
+    <ion-item *ngIf="children.length > 1" class="child-selector">
+      <ion-label>Patient</ion-label>
+      <ion-select [value]="selectedChildId" (ionChange)="onChildChange($event)" interface="popover">
+        <ion-select-option *ngFor="let child of children" [value]="child.id">
+          {{ child.first_name }} {{ child.last_name }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+
+  <!-- Loading state -->
+  <div *ngIf="isLoading" class="loading-container">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Loading medical record...</p>
+  </div>
+
+  <!-- Error message -->
+  <div *ngIf="errorMessage" class="error-container">
+    <ion-icon name="alert-circle-outline"></ion-icon>
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <!-- Medical record content -->
+  <div class="medical-sections" *ngIf="!isLoading && !errorMessage && record">
+
+    <!-- Case without medical information -->
+    <div *ngIf="!hasAnyMedicalInfo()" class="no-info-card">
+      <ion-icon name="document-text-outline"></ion-icon>
+      <h2>No medical information registered</h2>
+      <p>No medical information has been registered for this patient yet.</p>
+      <ion-button (click)="goToEdit()" fill="solid" color="primary">
+        <ion-icon name="add-outline" slot="start"></ion-icon>
+        Add information
+      </ion-button>
+    </div>
+
+    <!-- Case with medical information -->
+    <div class="info-cards" *ngIf="hasAnyMedicalInfo()">
+
+      <!-- Disability -->
+      <div class="info-card urgent" *ngIf="record.has_disability">
+        <div class="card-header">
+          <div class="card-icon disability">
+            <ion-icon name="accessibility-outline"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Disability</h3>
+            <span class="status-badge positive">Registered</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>{{ record.disability_description }}</p>
+        </div>
+      </div>
+
+      <!-- Continuous Treatment -->
+      <div class="info-card important" *ngIf="record.requires_treatment">
+        <div class="card-header">
+          <div class="card-icon treatment">
+            <ion-icon name="medical-outline"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Continuous Treatment</h3>
+            <span class="status-badge active">Active</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>{{ record.treatment_description }}</p>
+        </div>
+      </div>
+
+      <!-- Current Medications -->
+      <div class="info-card normal" *ngIf="record.current_medications && record.current_medications.trim() !== ''">
+        <div class="card-header">
+          <div class="card-icon medications">
+            <ion-icon name="medkit-outline"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Current Medications</h3>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>{{ record.current_medications }}</p>
+        </div>
+      </div>
+
+      <!-- Hospitalization History -->
+      <div class="info-card important" *ngIf="record.was_hospitalized">
+        <div class="card-header">
+          <div class="card-icon hospital">
+            <ion-icon name="business-outline"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Hospitalization History</h3>
+            <span class="status-badge warning">Hospitalized</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>{{ record.hospitalization_details }}</p>
+        </div>
+      </div>
+
+      <!-- Ambulance Transport -->
+      <div class="info-card urgent" *ngIf="record.ambulance_transport">
+        <div class="card-header">
+          <div class="card-icon ambulance">
+            <ion-icon name="car-outline"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Ambulance Transport</h3>
+            <span class="status-badge emergency">Emergency</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>{{ record.ambulance_details }}</p>
+        </div>
+      </div>
+
+      <!-- Recommended Surgery -->
+      <div class="info-card important" *ngIf="record.surgery_recommended">
+        <div class="card-header">
+          <div class="card-icon surgery">
+            <ion-icon name="cut-outline"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Recommended Surgery</h3>
+            <span class="status-badge pending">Pending</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>{{ record.surgery_details }}</p>
+        </div>
+      </div>
+
+      <!-- Psychological Treatment -->
+      <div class="info-card normal" *ngIf="record.psychological_treatment">
+        <div class="card-header">
+          <div class="card-icon psychology">
+            <ion-icon name="happy-outline"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Psychological Treatment</h3>
+            <span class="status-badge active">In progress</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>{{ record.psychological_treatment_details }}</p>
+        </div>
+      </div>
+
+      <!-- Recent Medical Consultation -->
+      <div class="info-card normal" *ngIf="record.recent_medical_consult">
+        <div class="card-header">
+          <div class="card-icon consult">
+            <ion-icon name="calendar-outline"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Recent Medical Consultation</h3>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>{{ record.medical_consult_details }}</p>
+        </div>
+      </div>
+
+      <!-- Recent Illnesses -->
+      <div class="info-card normal" *ngIf="record.recent_conditions && record.recent_conditions.trim() !== ''">
+        <div class="card-header">
+          <div class="card-icon conditions">
+            <ion-icon name="thermometer-outline"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Recent Illnesses</h3>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>{{ record.recent_conditions }}</p>
+        </div>
+      </div>
+
+      <!-- Known Allergies -->
+      <div class="info-card warning" *ngIf="record.known_allergies && record.known_allergies.trim() !== ''">
+        <div class="card-header">
+          <div class="card-icon allergies">
+            <ion-icon name="warning-outline"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Known Allergies</h3>
+            <span class="status-badge warning">Caution</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>{{ record.known_allergies }}</p>
+        </div>
+      </div>
+
+      <!-- Medication Allergies -->
+      <div class="info-card urgent" *ngIf="record.medication_allergies">
+        <div class="card-header">
+          <div class="card-icon medication-allergy">
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Medication Allergies</h3>
+            <span class="status-badge emergency">Important!</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>{{ record.medication_allergies_details }}</p>
+        </div>
+      </div>
+
+      <!-- Physical Limitations -->
+      <div class="info-card important" *ngIf="record.physical_limitations">
+        <div class="card-header">
+          <div class="card-icon limitations">
+            <ion-icon name="body-outline"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Physical Limitations</h3>
+            <span class="status-badge caution">Limited</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>{{ record.physical_limitations_details }}</p>
+        </div>
+      </div>
+
+      <!-- Other Conditions -->
+      <div class="info-card normal" *ngIf="record.other_conditions && record.other_conditions.trim() !== ''">
+        <div class="card-header">
+          <div class="card-icon other">
+            <ion-icon name="list-outline"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Other Conditions</h3>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>{{ record.other_conditions }}</p>
+        </div>
+      </div>
+
+      <!-- Seizure History -->
+      <div class="info-card urgent" *ngIf="record.has_seizures">
+        <div class="card-header">
+          <div class="card-icon seizures">
+            <ion-icon name="flash-outline"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Seizure History</h3>
+            <span class="status-badge emergency">Critical!</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>{{ record.seizure_details }}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Edit button -->
+    <div class="action-buttons" *ngIf="hasAnyMedicalInfo() && canEdit()">
+      <ion-button (click)="goToEdit()" fill="outline" color="primary" size="large">
+        <ion-icon name="create-outline" slot="start"></ion-icon>
+        Edit medical information
+      </ion-button>
+    </div>
+
+  </div>
+
+</ion-content>

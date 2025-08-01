@@ -1,0 +1,136 @@
+/* 1️⃣ Contenedor del modal */
+.register-modal .modal-wrapper {
+  width: 92%;
+  max-width: 420px;
+  height: auto;
+  border-radius: 24px;
+  background: #ffffff !important;
+  padding: 0;
+  box-shadow: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 2️⃣ Elimina por completo cualquier backdrop */
+.register-modal::part(backdrop) {
+  background: transparent !important;
+}
+
+/* 3️⃣ Área interna centrada */
+.register-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  background: transparent;
+}
+
+.register-item.ion-focused ion-label,
+.register-item.ion-has-value ion-label {
+  color: #007bff; /* opcional, cambia color al estar activo */
+  font-weight: 700; /* opcional, lo hace más visible */
+}
+
+/* 4️⃣ Tarjeta del formulario */
+.register-card {
+  width: 100%;
+  max-width: 360px;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 2.2rem 1.8rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+  text-align: center;
+}
+
+/* 5️⃣ Títulos */
+.register-card h2,
+.register-title {
+  margin-bottom: 0.4rem;
+  color: #007bff;
+  font-weight: 700;
+}
+
+.register-card p {
+  color: #555;
+  margin-bottom: 1.6rem;
+}
+
+/* 6️⃣ Campos */
+.register-item {
+  --background: #f9f9f9;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Labels */
+.register-item ion-label {
+  font-weight: 600;
+  font-size: .90rem;
+  color: #333;
+  text-align: left;
+}
+
+.register-item.ion-focused ion-label,
+.register-item.ion-has-value ion-label {
+  color: #007bff;
+  font-weight: 700;
+}
+
+/* Inputs */
+.register-item ion-input {
+  color: #000;
+}
+
+/* Iconos (si los usas) */
+.register-item ion-icon {
+  color: #007bff;
+}
+
+/* 7️⃣ Botón primario — shape: round */
+.register-btn {
+  --background: #007bff;
+  --color: #ffffff;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-radius: 100px;      /* completamente redondo */
+  padding: 0.5rem 1.4rem;
+  height: auto;
+  transition: background 0.3s;
+}
+
+.register-btn:hover {
+  --background: #006ee6;
+}
+
+/* Botón Cancelar — shape: round */
+.register-card ion-button[fill="outline"] {
+  --border-color: #000000;
+  --color: #000000;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-radius: 100px;      /* completamente redondo */
+  padding: 0.5rem 1.4rem;
+  height: auto;
+  transition: background 0.3s;
+}
+
+.register-card ion-button[fill="outline"]:hover {
+  --background: rgba(0, 0, 0, 0.04);
+}
+
+/* 8️⃣ Contenedor principal centrado */
+.register-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Fondo blanco/gris claro */
+ion-content.register-content {
+  --background: #e6e4e4 !important;
+  background: #ffffff !important;
+}

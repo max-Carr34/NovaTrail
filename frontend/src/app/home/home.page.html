@@ -1,0 +1,129 @@
+<ion-header class="light-header">
+  <ion-toolbar>
+    <ion-title class="light-title">Nova Trail </ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="login-button" shape="round" (click)="abrirLogin()">Log in</ion-button>
+      <ion-button class="register-button" shape="round" (click)="abrirRegistro()">Create An Account</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="custom-content">
+  <!-- Fondo de pantalla -->
+  <div class="background-wrapper">
+    <img src="assets/images/Ejem.jpeg" alt="Imagen fondo CRM" />
+  </div>
+  
+  <!-- Contenedor centrado -->
+  <div class="page-wrapper">
+    <div class="centered-container">
+      <!-- Contenedor izquierdo - 40% -->
+      <div class="left-container">
+        <ion-card class="section">
+          <ion-card-header>
+            <ion-card-title>Who are we?</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Nova Trail Talent Solutions was founded with the passion to connect people with their professional and personal goals to discover meaningful opportunities around the world.
+          </ion-card-content>
+        </ion-card>
+      </div>
+      
+      <div class="right-container">
+  <ion-card class="section">
+    <ion-card-header>
+      <ion-card-title>📞 More About Us</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="social-media-section">
+        <h4>Take a look of our Social Media:</h4>
+        <div class="social-icons-container">
+          
+          <!-- Facebook -->
+          <ion-button fill="clear" size="large" (click)="openSocialMedia('facebook')" class="social-button facebook">
+            <ion-icon name="logo-facebook" slot="icon-only"></ion-icon>
+          </ion-button>
+          
+          <!-- Instagram -->
+          <ion-button fill="clear" size="large" (click)="openSocialMedia('instagram')" class="social-button instagram">
+            <ion-icon name="logo-instagram" slot="icon-only"></ion-icon>
+          </ion-button>
+          
+          <!-- TikTok -->
+          <ion-button fill="clear" size="large" (click)="openSocialMedia('tiktok')" class="social-button tiktok">
+            <ion-icon name="logo-tiktok" slot="icon-only"></ion-icon>
+          </ion-button>
+          
+          <!-- YouTube -->
+          <ion-button fill="clear" size="large" (click)="openSocialMedia('youtube')" class="social-button youtube">
+            <ion-icon name="logo-youtube" slot="icon-only"></ion-icon>
+          </ion-button>
+          
+          <!-- WhatsApp -->
+          <ion-button fill="clear" size="large" (click)="contactarWhatsApp()" class="social-button whatsapp">
+            <ion-icon name="logo-whatsapp" slot="icon-only"></ion-icon>
+          </ion-button>
+          
+          <!-- Twitter/X -->
+          <ion-button fill="clear" size="large" (click)="openSocialMedia('twitter')" class="social-button twitter">
+            <ion-icon name="logo-twitter" slot="icon-only"></ion-icon>
+          </ion-button>
+
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</div>
+
+    </div>
+  </div>
+  
+  <h1 style="color: black; text-align: center;">Here are some of our official pages</h1>
+  
+  <div class="cards-container">
+      <ion-card button href="https://www.wtlprograms.com/" target="_blank" rel="noopener">
+      <img alt="Global training experience" src="./assets/images/NovaTrail.1.jpg" />
+      <ion-card-header>
+        <ion-card-title>World Training & Languages</ion-card-title>
+        <ion-card-subtitle>Opportunities Without Borders</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        Explore hands-on training programs abroad — from 3 to 18 months — designed to boost your career and language skills. Real growth, real culture, real experience.
+      </ion-card-content>
+    </ion-card>
+
+    
+   <ion-card button href="https://novatrailcareers.com/" target="_blank" rel="noopener">
+      <img alt="Children learning and exploring" src="./assets/images/NovaTrail.jpg" />
+      <ion-card-header>
+        <ion-card-title>Nova Trail Global Network</ion-card-title>
+        <ion-card-subtitle>About Us</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+       At NovaTrail, we connect people with their professional and personal goals through innovative talent solutions — from startups to global corporations. 
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card  button href="https://www.intrainingprograms.com/" target="_blank" rel="noopener">
+      <img alt="Camp team in action" src="./assets/images/NovaTrail.2.jpg" />
+      <ion-card-header>
+        <ion-card-title>Why Join Intraining?</ion-card-title>
+        <ion-card-subtitle>Support Abroad</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        At Intraining, you're never alone. We provide full support to help you adapt, solve issues, and make the most of your international experience. Choose your next destination and thrive.
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+  <footer class="footer">
+  <div class="footer-content">
+    <div class="copyright">
+      COPYRIGHT © 2025 NOVA TRAIL - TODOS LOS DERECHOS RESERVADOS.
+    </div>
+    <div>
+      <a href="#" class="privacy-link">AVISO DE PRIVACIDAD</a>
+    </div>
+  </div>
+</footer>
+</ion-content>

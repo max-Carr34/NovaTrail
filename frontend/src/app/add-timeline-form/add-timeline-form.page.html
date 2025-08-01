@@ -1,0 +1,103 @@
+<ion-header class="glass-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/add-timeline-event" class="glass-back-btn" aria-label="Back"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="glass-title">New Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="glass-content" role="main">
+  <section class="main-card" aria-labelledby="card-title">
+    <header class="card-header">
+      <div class="icon-container" aria-hidden="true">
+        <ion-icon name="sparkles" class="main-icon"></ion-icon>
+      </div>
+      <h1 id="card-title" class="card-title">Create Event</h1>
+      <p class="card-subtitle">Child {{ childId }} • Special Moment</p>
+    </header>
+
+    <form (ngSubmit)="submit()" #eventForm="ngForm" class="glass-form" novalidate>
+      
+      <div class="form-field">
+        <label for="title" class="field-label">
+          <ion-icon name="pencil" aria-hidden="true" class="field-icon"></ion-icon>
+          Event Title
+        </label>
+        <ion-input
+          id="title"
+          type="text"
+          name="title"
+          [(ngModel)]="title"
+          required
+          maxlength="100"
+          placeholder="E.g., Camp Start, Medical Appointment, Weekly Progress"
+          class="glass-input"
+          aria-required="true"
+          aria-describedby="titleHelp"
+        ></ion-input>
+        <small id="titleHelp" class="field-help">Maximum 100 characters.</small>
+      </div>
+
+      <div class="form-field">
+        <label for="description" class="field-label">
+          <ion-icon name="document-text" aria-hidden="true" class="field-icon"></ion-icon>
+          Description
+        </label>
+        <ion-textarea
+          id="description"
+          name="description"
+          [(ngModel)]="description"
+          required
+          maxlength="500"
+          rows="4"
+          placeholder="Describe what happened"
+          class="glass-textarea"
+          aria-required="true"
+          aria-describedby="descriptionHelp"
+        ></ion-textarea>
+        <small id="descriptionHelp" class="field-help">Maximum 500 characters.</small>
+      </div>
+
+      <div class="form-field">
+        <label for="event_date" class="field-label">
+          <ion-icon name="calendar" aria-hidden="true" class="field-icon"></ion-icon>
+          Event Date
+        </label>
+        <ion-datetime
+          id="event_date"
+          displayFormat="DD/MM/YYYY"
+          pickerFormat="DD/MM/YYYY"
+          [(ngModel)]="event_date"
+          name="event_date"
+          required
+          class="glass-datetime"
+          aria-required="true"
+        ></ion-datetime>
+      </div>
+
+      <div class="submit-section">
+        <ion-button
+          type="submit"
+          expand="block"
+          [disabled]="isSubmitting || !eventForm.form.valid"
+          class="glass-submit-btn"
+          aria-live="polite"
+        >
+          <div class="btn-content">
+            <ion-icon name="rocket-outline" class="btn-icon" aria-hidden="true"></ion-icon>
+            <span class="btn-text" *ngIf="!isSubmitting">Create Event</span>
+            <span class="btn-text" *ngIf="isSubmitting">Creating...</span>
+          </div>
+          <div class="btn-shine"></div>
+        </ion-button>
+
+        <div class="form-info" role="note">
+          <ion-icon name="information-circle-outline" aria-hidden="true"></ion-icon>
+          <span>All fields are required</span>
+        </div>
+      </div>
+
+    </form>
+  </section>
+</ion-content>

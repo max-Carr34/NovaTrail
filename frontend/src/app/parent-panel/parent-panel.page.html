@@ -1,0 +1,160 @@
+<ion-header [translucent]="true" class="custom-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <div class="menu-button" (click)="toggleMenu()" [class.open]="isMenuOpen">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </ion-buttons>
+    <ion-title>Panel-CP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="menu-overlay" [class.show]="isMenuOpen" (click)="closeMenu()"></div>
+
+<div class="sidebar-menu" [class.open]="isMenuOpen">
+  <div class="sidebar-header">
+    <h3>Options Panel</h3>
+    <ion-button fill="clear" (click)="closeMenu()" class="close-button">
+      <ion-icon name="close" slot="icon-only"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="sidebar-items">
+    <button class="sidebar-item" (click)="handleMenuOption('profile')">
+      <ion-icon name="person-outline" class="item-icon"></ion-icon>
+      <span>View Child Profile</span>
+    </button>
+
+    <button class="sidebar-item" (click)="handleMenuOption('medical')">
+      <ion-icon name="wallet-outline" class="item-icon"></ion-icon>
+      <span>View Medical Record</span>
+    </button>
+
+    <button class="sidebar-item" (click)="handleMenuOption('contact')">
+      <ion-icon name="mail-outline" class="item-icon"></ion-icon>
+      <span>Contact Staff</span>
+    </button>
+
+    <button class="sidebar-item" (click)="handleMenuOption('notifications')">
+      <ion-icon name="call-outline" class="item-icon"></ion-icon>
+      <span>Notifications</span>
+    </button>
+
+    <div class="sidebar-divider"></div>
+
+    <button class="sidebar-item logout-item" (click)="handleMenuOption('logout')">
+      <ion-icon name="log-out-outline" class="item-icon"></ion-icon>
+      <span>Log Out</span>
+    </button>
+  </div>
+</div>
+
+<ion-content fullscreen="true" class="fade-image-content">
+  <div class="background-wrapper">
+    <img src="assets/images/camp.jpeg" alt="CRM background image" />
+  </div>
+
+  <div class="main-content">
+    <div class="content-container">
+      <div class="welcome-section">
+        <h1>Welcome Back to the Parental-Panel!</h1>
+        <p>Organize the SummerCamp of your kids, with these tools!</p>
+      </div>
+
+      <div class="features-grid">
+
+        <!-- Botón para abrir alerta personalizada para editar o registrar -->
+        <div class="feature-card-link" style="cursor: pointer;" (click)="goToChildRegistrationOrEdit()">
+          <div class="feature-card">
+            <div class="feature-icon">📋</div>
+            <h3 class="feature-title">Register your child</h3>
+            <p class="feature-description">
+              Let's get started! Add your child's details to begin.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-card-link" style="cursor: pointer;" (click)="goToMedicalSelection()">
+          <div class="feature-card">
+            <div class="feature-icon">🩺</div>
+            <h3 class="feature-title">Medical Information</h3>
+            <p class="feature-description">
+              Create or edit Medical File for your kids
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-card" routerLink="/communication-select">
+          <div class="feature-icon">📬</div>
+          <h3 class="feature-title">Communication</h3>
+          <p class="feature-description">
+            Keep in contact with the organizers and your son.
+          </p>
+        </div>
+
+        <div
+          class="feature-card-link"
+          style="cursor: pointer;"
+          (click)="goToTimeline()"
+        >
+          <div class="feature-card">
+            <div class="feature-icon">🗓️</div>
+            <h3 class="feature-title">Timeline</h3>
+            <p class="feature-description">
+              Follow your child's journey — All in one timeline!
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+    <footer class="footer">
+  <div class="footer-content">
+    <div class="copyright">
+      COPYRIGHT © 2025 NOVA TRAIL - TODOS LOS DERECHOS RESERVADOS.
+    </div>
+    <div>
+      <a href="#" class="privacy-link">AVISO DE PRIVACIDAD</a>
+    </div>
+  </div>
+</footer>
+</ion-content>
+
+<!-- Custom alert -->
+<div
+  *ngIf="showCustomAlert"
+  class="custom-alert-overlay"
+  (click)="onOverlayClick($event)"
+>
+  <div
+    class="custom-alert-container"
+    [class.custom-simple-alert]="customAlertData?.type === 'simple'"
+  >
+    <div class="custom-alert-header">
+      <h2 class="custom-alert-title">{{ customAlertData?.title }}</h2>
+      <p *ngIf="customAlertData?.subtitle" class="custom-alert-subtitle">
+        {{ customAlertData?.subtitle }}
+      </p>
+    </div>
+
+    <div *ngIf="customAlertData?.message" class="custom-alert-message">
+      {{ customAlertData?.message }}
+    </div>
+
+    <div class="custom-alert-buttons">
+      <button
+        *ngFor="let button of customAlertData?.buttons"
+        class="custom-alert-button"
+        [class]="button.cssClass"
+        (click)="onCustomAlertButtonClick(button)"
+      >
+        {{ button.text }}
+      </button>
+    </div>
+  </div>
+</div>

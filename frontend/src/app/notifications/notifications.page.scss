@@ -1,0 +1,291 @@
+/* === HEADER PERSONALIZADO === */
+.custom-header {
+  background: #4f86f7;
+  box-shadow: 0 2px 8px rgba(79, 134, 247, 0.2);
+}
+
+.custom-toolbar {
+  --background: transparent;
+  --color: white;
+  padding: 8px 0;
+}
+
+.back-button {
+  --color: white;
+  --border-radius: 50%;
+  --padding: 8px;
+  margin-left: 4px;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  --background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.custom-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.title-icon {
+  font-size: 1.3rem;
+  color: white;
+}
+
+/* === CONTENIDO PRINCIPAL === */
+.custom-content {
+  --background: #ffffff;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+}
+
+.notifications-container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* === ESTADO DE CARGA === */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.loading-state ion-spinner {
+  --color: #4f86f7;
+  transform: scale(1.2);
+  margin-bottom: 16px;
+}
+
+.loading-state p {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* === LISTA DE NOTIFICACIONES === */
+.custom-list {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-card {
+  --background: white;
+  --border-radius: 16px;
+  --padding-start: 20px;
+  --padding-end: 16px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  --inner-padding-end: 0;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.notification-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --background: #fefefe;
+}
+
+.notification-card:last-child {
+  margin-bottom: 0;
+}
+
+/* === AVATAR E ICONOS === */
+.icon-container {
+  --border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.notification-card:hover .icon-container {
+  transform: scale(1.05);
+}
+
+.icon-container ion-icon {
+  font-size: 1.4rem;
+  color: white !important;
+}
+
+/* === CONTENIDO DE NOTIFICACIÓN === */
+.notification-message {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 6px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.notification-timestamp {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* === BOTÓN DE OPCIONES === */
+.notification-card ion-buttons ion-button {
+  --color: #94a3b8;
+  --border-radius: 8px;
+  --padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.notification-card ion-buttons ion-button:hover {
+  --color: #475569;
+  --background: rgba(148, 163, 184, 0.1);
+}
+
+/* === ESTADO VACÍO === */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+  background: white;
+  border-radius: 20px;
+  margin: 20px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+}
+
+.empty-icon {
+  font-size: 4rem;
+  color: #cbd5e1;
+  margin-bottom: 24px;
+  opacity: 0.8;
+}
+
+.empty-state h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #334155;
+  margin: 0 0 8px 0;
+}
+
+.empty-state p {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+  max-width: 280px;
+}
+
+/* === COLORES PARA TIPOS DE NOTIFICACIÓN === */
+:root {
+  --ion-color-success: #10b981;
+  --ion-color-warning: #f59e0b;
+  --ion-color-danger: #ef4444;
+  --ion-color-primary: #4f86f7;
+  --ion-color-secondary: #6366f1;
+}
+
+/* === ANIMACIONES === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notification-card {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.notification-card:nth-child(2) { animation-delay: 0.1s; }
+.notification-card:nth-child(3) { animation-delay: 0.2s; }
+.notification-card:nth-child(4) { animation-delay: 0.3s; }
+.notification-card:nth-child(5) { animation-delay: 0.4s; }
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .notifications-container {
+    padding: 0 4px;
+  }
+  
+  .notification-card {
+    --padding-start: 16px;
+    --padding-end: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .icon-container {
+    width: 44px;
+    height: 44px;
+    margin-right: 12px;
+  }
+  
+  .notification-message {
+    font-size: 0.95rem;
+  }
+  
+  .notification-timestamp {
+    font-size: 0.8rem;
+  }
+}
+
+/* === MODO OSCURO (OPCIONAL) === */
+@media (prefers-color-scheme: dark) {
+  .custom-content {
+    --background: #ffffff;
+  }
+  
+  .notification-card {
+    --background: white;
+    border-color: rgba(229, 231, 235, 0.8);
+  }
+  
+  .notification-card:hover {
+    --background: #fefefe;
+  }
+  
+  .notification-message {
+    color: #1f2937;
+  }
+  
+  .notification-timestamp {
+    color: #6b7280;
+  }
+  
+  .empty-state {
+    background: white;
+    border-color: rgba(229, 231, 235, 0.8);
+  }
+  
+  .empty-state h3 {
+    color: #1f2937;
+  }
+  
+  .empty-state p {
+    color: #6b7280;
+  }
+}

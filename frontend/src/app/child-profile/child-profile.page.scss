@@ -1,0 +1,763 @@
+/* Header Styles */
+.user-header {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.user-header ion-toolbar {
+  --background: white;
+  --color: #1e293b;
+}
+
+.user-header ion-title {
+  font-weight: 700;
+  color: #1e293b !important;
+  font-size: 1.4rem;
+}
+
+.back-button {
+  --color: #3b82f6;
+  --border-radius: 50%;
+  --padding-start: 8px;
+  --padding-end: 8px;
+}
+
+.back-button:hover {
+  --background: rgba(59, 130, 246, 0.1);
+}
+
+.refresh-button {
+  --color: #3b82f6;
+}
+
+/* Main Content */
+ion-content {
+  --background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+/* Título Principal */
+.titulo-usuario {
+  text-align: center;
+  padding: 2rem 1rem 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+  margin-bottom: 1.5rem;
+  border-radius: 0 0 32px 32px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+}
+
+.titulo-usuario h1 {
+  color: #1e293b;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 1px rgba(59, 130, 246, 0.3);
+}
+
+.titulo-usuario .subtitulo {
+  color: #475569;
+  font-size: 1.1rem;
+  margin: 0 0 1rem 0;
+  font-weight: 500;
+}
+
+.usuario-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 0.75rem 1.5rem;
+  border-radius: 20px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  margin: 0 auto;
+  max-width: fit-content;
+}
+
+.usuario-stats ion-icon {
+  color: #3b82f6;
+  font-size: 1.3rem;
+}
+
+.usuario-stats span {
+  color: #1e40af;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Contenedor Principal */
+.contenedor-usuario {
+  padding: 0 1rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Grid de Tarjetas */
+.grid-mis-ninos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Tarjeta de Niño Usuario */
+.tarjeta-mi-nino {
+  background: white;
+  border-radius: 24px;
+  padding: 1.75rem 1.75rem 100px; /* Espacio extra para los botones */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: slideInUp 0.6s ease-out both;
+  cursor: pointer;
+}
+
+.tarjeta-mi-nino::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #3b82f6 0%, #1e40af 50%, #3b82f6 100%);
+}
+
+.tarjeta-mi-nino:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+/* Header de la tarjeta */
+.header-tarjeta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.avatar-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-nino {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+  position: relative;
+}
+
+.badge-genero {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 2px solid white;
+}
+
+.badge-genero.badge-male {
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  color: white;
+}
+
+.badge-genero.badge-female {
+  background: linear-gradient(135deg, #ec4899, #be185d);
+  color: white;
+}
+
+.badge-genero ion-icon {
+  font-size: 0.9rem;
+}
+
+.info-basica {
+  flex: 1;
+}
+
+.info-basica h2 {
+  color: #1e293b;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.2;
+}
+
+.info-basica h3 {
+  color: #64748b;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.edad-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(30, 64, 175, 0.15) 100%);
+  color: #1e40af;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* Contenido de la tarjeta */
+.contenido-tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.detalle-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(248, 250, 252, 0.8);
+  border-radius: 12px;
+  border: 1px solid rgba(226, 232, 240, 0.4);
+  transition: all 0.3s ease;
+}
+
+.detalle-item:hover {
+  background: rgba(248, 250, 252, 1);
+  border-color: rgba(59, 130, 246, 0.3);
+  transform: translateX(4px);
+}
+
+.icono-detalle {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+.birthday-icon {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.notes-icon {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(217, 119, 6, 0.2) 100%);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.info-detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.info-detalle .label {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-detalle .valor {
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Footer de la tarjeta */
+.footer-tarjeta {
+  border-top: 1px solid rgba(226, 232, 240, 0.4);
+  padding-top: 1rem;
+}
+
+.fecha-registro {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.fecha-registro ion-icon {
+  font-size: 1rem;
+  color: #3b82f6;
+}
+
+/* ========== ESTILOS DE BOTONES MEJORADOS ========== */
+
+/* Contenedor de botones */
+.botones-accion {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  z-index: 10;
+}
+
+/* Botón Ver Expediente */
+.boton-expediente {
+  --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --background-activated: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  --background-hover: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  --color: white;
+  --border-radius: 14px;
+  --padding-start: 18px;
+  --padding-end: 18px;
+  --padding-top: 14px;
+  --padding-bottom: 14px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.35);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0;
+  height: auto;
+}
+
+.boton-expediente:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.45);
+}
+
+.boton-expediente:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Botón Registrar/Editar */
+.boton-registrar {
+  --background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --background-activated: linear-gradient(135deg, #059669 0%, #047857 100%);
+  --background-hover: linear-gradient(135deg, #059669 0%, #047857 100%);
+  --color: white;
+  --border-radius: 14px;
+  --padding-start: 18px;
+  --padding-end: 18px;
+  --padding-top: 14px;
+  --padding-bottom: 14px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0;
+  height: auto;
+}
+
+.boton-registrar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.45);
+}
+
+.boton-registrar:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+/* Estilos para iconos en botones */
+.boton-con-icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.boton-con-icono ion-icon {
+  font-size: 1.1rem;
+  margin-right: 4px;
+}
+
+/* Versión alternativa - Botones horizontales (opcional) */
+.botones-accion-horizontal {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  z-index: 10;
+}
+
+.boton-expediente-horizontal,
+.boton-registrar-horizontal {
+  flex: 1;
+  --border-radius: 12px;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.3px;
+  font-size: 0.85rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0;
+  height: auto;
+}
+
+.boton-expediente-horizontal {
+  --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --color: white;
+  box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+}
+
+.boton-registrar-horizontal {
+  --background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --color: white;
+  box-shadow: 0 3px 10px rgba(16, 185, 129, 0.3);
+}
+
+.boton-expediente-horizontal:hover,
+.boton-registrar-horizontal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== FIN ESTILOS DE BOTONES ========== */
+
+/* Detalles del Niño Usuario */
+.detalles-mi-nino {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.icono-detalle-usuario {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.2rem;
+}
+
+.icono-cumpleanos {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.icono-notas {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(217, 119, 6, 0.2) 100%);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.contenido-detalle-usuario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.etiqueta-detalle-usuario {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.valor-detalle-usuario {
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+/* Estados */
+.estado-sin-ninos {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  margin-top: 2rem;
+}
+
+.empty-illustration {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 2rem;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(30, 64, 175, 0.15) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 2px solid rgba(59, 130, 246, 0.2);
+}
+
+.empty-illustration ion-icon {
+  font-size: 3rem;
+  color: #3b82f6;
+}
+
+.estado-sin-ninos h3 {
+  color: #1e293b;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+}
+
+.estado-sin-ninos p {
+  color: #64748b;
+  font-size: 1.1rem;
+  margin: 0;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* Estado de Carga */
+.estado-cargando {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  margin-top: 2rem;
+}
+
+.estado-cargando ion-spinner {
+  width: 50px;
+  height: 50px;
+  --color: #3b82f6;
+}
+
+.estado-cargando p {
+  color: #475569;
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  font-weight: 500;
+}
+
+/* Estado de Error */
+.estado-error {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  margin-top: 2rem;
+}
+
+.error-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 2rem;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(220, 38, 38, 0.15) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(239, 68, 68, 0.2);
+}
+
+.error-icon ion-icon {
+  font-size: 2.5rem;
+  color: #dc2626;
+}
+
+.estado-error h3 {
+  color: #1e293b;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+}
+
+.estado-error p {
+  color: #64748b;
+  font-size: 1rem;
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+}
+
+.boton-reintentar {
+  --background: #3b82f6;
+  --color: white;
+  --border-radius: 12px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --padding-start: 24px;
+  --padding-end: 24px;
+  font-weight: 600;
+}
+
+/* Mensaje de Error */
+.mensaje-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #dc2626;
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  margin: 1rem 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Animaciones */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .grid-mis-ninos {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .tarjeta-mi-nino {
+    padding: 1.5rem 1.5rem 90px;
+  }
+  
+  .titulo-usuario {
+    padding: 1.5rem 1rem 1.25rem;
+  }
+  
+  .titulo-usuario h1 {
+    font-size: 1.8rem;
+  }
+  
+  .header-tarjeta {
+    gap: 1rem;
+  }
+  
+  .avatar-nino {
+    width: 60px;
+    height: 60px;
+    font-size: 1.2rem;
+  }
+  
+  .info-basica h2 {
+    font-size: 1.25rem;
+  }
+
+  /* Botones en móvil - cambiar a horizontal */
+  .botones-accion {
+    flex-direction: row;
+    gap: 8px;
+  }
+  
+  .boton-expediente,
+  .boton-registrar {
+    flex: 1;
+    font-size: 0.85rem;
+    --padding-start: 12px;
+    --padding-end: 12px;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contenedor-usuario {
+    padding: 0 0.75rem 2rem;
+  }
+  
+  .titulo-usuario {
+    padding: 1.25rem 0.75rem 1rem;
+  }
+  
+  .titulo-usuario h1 {
+    font-size: 1.6rem;
+  }
+  
+  .usuario-stats {
+    padding: 0.6rem 1.25rem;
+  }
+  
+  .tarjeta-mi-nino {
+    padding: 1.25rem 1.25rem 85px;
+  }
+  
+  .header-tarjeta {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .avatar-nino {
+    width: 55px;
+    height: 55px;
+    font-size: 1.1rem;
+  }
+  
+  .detalle-item {
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+  
+  .icono-detalle-usuario {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+
+  /* Botones más pequeños en móviles pequeños */
+  .boton-expediente,
+  .boton-registrar {
+    font-size: 0.8rem;
+    --padding-start: 10px;
+    --padding-end: 10px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+  }
+  
+  .botones-accion {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

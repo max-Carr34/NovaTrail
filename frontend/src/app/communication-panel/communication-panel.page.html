@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="goBack()">
+        <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-icon name="chatbubbles-outline" class="title-icon"></ion-icon>
+      Communication Panel
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="communication-content">
+    
+    <!-- 🔍 Search bar -->
+    <div class="search-section">
+      <ion-searchbar [(ngModel)]="searchTerm" placeholder="Search by user name or email" debounce="500"></ion-searchbar>
+    </div>
+    
+    <!-- Loading Spinner -->
+    <ion-spinner *ngIf="loading" name="crescent" class="loading-spinner"></ion-spinner>
+
+    <!-- ✅ List of Parents -->
+    <div *ngIf="filteredParents.length > 0" class="users-container">
+      <ion-list-header class="users-header">
+        <ion-label>Registered Parents</ion-label>
+      </ion-list-header>
+      <ion-list>
+        <ion-item *ngFor="let parent of filteredParents" class="user-item">
+          <ion-avatar slot="start" class="user-avatar">
+            <ion-icon name="person-circle-outline" size="large"></ion-icon>
+          </ion-avatar>
+          <ion-label class="user-info">
+            <h2>{{ parent.nombre }}</h2>
+            <p class="user-email">{{ parent.correo }}</p>
+            <p class="children-count">{{ childrenCountMap[parent.id] || 0 }} child(ren)</p>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button class="chat-button" (click)="openChat(parent.id)" shape="round" style="color: rgb(249, 249, 249);" expand="block">
+              <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+              <span>Chat</span>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <!-- ✅ List of Admins and Staff (visible only if userRole is admin or staff) -->
+    <div *ngIf="userRole === 'admin' || userRole === 'staff'">
+      
+      <!-- Admins -->
+      <ion-list-header *ngIf="filteredAdmins.length > 0" class="users-header">
+        <ion-label>Administrators</ion-label>
+      </ion-list-header>
+      <ion-list>
+        <ion-item *ngFor="let admin of filteredAdmins" class="user-item">
+          <ion-avatar slot="start">
+            <ion-icon name="shield-checkmark-outline" size="large"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ admin.nombre }}</h2>
+            <p>{{ admin.rol }}</p>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button (click)="openChat(admin.id)" color="secondary">
+              <ion-icon name="chatbubble-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+
+      <!-- Staff -->
+      <ion-list-header *ngIf="filteredStaff.length > 0" class="users-header">
+        <ion-label>Staff</ion-label>
+      </ion-list-header>
+      <ion-list>
+        <ion-item *ngFor="let st of filteredStaff" class="user-item">
+          <ion-avatar slot="start">
+            <ion-icon name="person-outline" size="large"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ st.nombre }}</h2>
+            <p>{{ st.rol }}</p>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button (click)="openChat(st.id)" color="secondary">
+              <ion-icon name="chatbubble-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <!-- Message when no data -->
+    <div *ngIf="!loading && filteredParents.length === 0 && filteredAdmins.length === 0 && filteredStaff.length === 0" class="no-data-container">
+      <ion-icon name="people-outline" class="no-data-icon"></ion-icon>
+      <p class="no-data-text">No users match your search.</p>
+    </div>
+
+  </div>
+</ion-content>

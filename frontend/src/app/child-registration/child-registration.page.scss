@@ -1,0 +1,429 @@
+/* Fondo general */
+.dialog-wrapper {
+  --background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+}
+
+/* Contenedor principal mejorado */
+.page-container {
+  display: flex;
+  justify-content: center;
+  padding: 4vh 1rem;
+  min-height: 100vh;
+}
+
+/* Tarjeta del formulario mejorada */
+.form-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 540px;
+  padding: 2rem 1.5rem;
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 40px rgba(0, 123, 255, 0.1),
+    0 10px 20px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(0, 123, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto de brillo sutil en la tarjeta */
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.3), transparent);
+}
+
+/* Sección principal (hero) */
+.hero-section {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.hero-section .brand-logo {
+  font-size: 3rem;
+  color: #007BFF;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 123, 255, 0.2));
+}
+
+.hero-section .main-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007BFF;
+  margin: 0.5rem 0;
+  text-shadow: 0 1px 2px rgba(0, 123, 255, 0.1);
+}
+
+.hero-section .hero-subtitle {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Títulos de grupo */
+.group-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #007BFF;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.group-title ion-icon {
+  font-size: 1.2rem;
+}
+
+.group-title h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Inputs y selects con diseño del registro de usuario */
+.register-item {
+  --background: #f9f9f9;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.register-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.15);
+}
+
+/* Etiquetas */
+.register-item ion-label {
+  font-weight: 600;
+  font-size: 0.90rem;
+  color: #333;
+  text-align: left;
+}
+
+/* Cuando están enfocados o con valor */
+.register-item.ion-focused ion-label,
+.register-item.ion-has-value ion-label {
+  color: #007bff;
+  font-weight: 700;
+}
+
+/* Inputs y selects */
+.register-item ion-input,
+.register-item ion-select {
+  color: #000;
+}
+
+/* Iconos dentro de inputs */
+.register-item ion-icon {
+  color: #007bff;
+}
+
+/* Columnas en línea para nombre/apellido */
+.flex-row {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.flex-item.half {
+  flex: 1;
+}
+
+/* Género con diseño moderno de cards */
+.horizontal-fields {
+  margin-top: 1rem;
+}
+
+.gender-section {
+  margin-top: 1rem;
+}
+
+.gender-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gender-title ion-icon {
+  color: #007bff;
+  font-size: 1.1rem;
+}
+
+.gender-options {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.gender-card {
+  flex: 1;
+  min-width: 0;
+  background: #f9f9f9;
+  border: 2px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 1rem 0.8rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.gender-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 123, 255, 0.15);
+  border-color: #007bff;
+}
+
+.gender-card.selected {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  border-color: #007bff;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+}
+
+.gender-card.selected .gender-emoji {
+  transform: scale(1.1);
+}
+
+.gender-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.gender-card:hover::before {
+  left: 100%;
+}
+
+.gender-emoji {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.gender-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.gender-card:not(.selected) .gender-text {
+  color: #333;
+}
+
+.gender-card.selected .gender-text {
+  color: white;
+}
+
+/* Efecto de pulso para la selección */
+.gender-card.selected::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulseEffect 0.6s ease-out;
+}
+
+@keyframes pulseEffect {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+  }
+}
+
+/* Responsivo para género */
+@media (max-width: 480px) {
+  .gender-options {
+    gap: 0.5rem;
+  }
+  
+  .gender-card {
+    padding: 0.8rem 0.5rem;
+  }
+  
+  .gender-emoji {
+    font-size: 1.5rem;
+  }
+  
+  .gender-text {
+    font-size: 0.8rem;
+  }
+}
+
+.action-section {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;  /* Apila verticalmente */
+  align-items: center;     /* Centra horizontalmente */
+  gap: 1rem;               /* Espacio entre botones */
+}
+
+.primary-btn {
+  --background: #007BFF;
+  --color: #fff;
+  --border-radius: 20px;
+  margin-bottom: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 123, 255, 0.3);
+}
+
+.secondary-action {
+  --border-color: #007BFF;
+  --color: #007BFF;
+  --border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.secondary-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Footer informativo */
+.signup-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #444;
+  padding: 1rem;
+  background: rgba(0, 123, 255, 0.02);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 123, 255, 0.1);
+}
+
+.signup-footer ion-icon {
+  color: #28a745;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* Mensajes de error */
+ion-text[color="danger"] {
+  font-size: 0.75rem;
+  padding-left: 8px;
+  display: block;
+}
+
+/* Estilos personalizados para la alerta de éxito */
+.success-alert {
+  --backdrop-opacity: 0.6;
+  --width: 320px;
+  --max-width: 90vw;
+}
+
+.success-alert .alert-wrapper {
+  border-radius: 20px !important;
+  box-shadow: 0 20px 40px rgba(0, 123, 255, 0.15) !important;
+  border: 2px solid #28a745 !important;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fff9 100%) !important;
+}
+
+.success-alert .alert-head {
+  padding: 1.5rem 1.5rem 0.5rem !important;
+  text-align: center !important;
+}
+
+.success-alert .alert-title {
+  color: #28a745 !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.success-alert .alert-message {
+  color: #2d5a3d !important;
+  font-size: 0.95rem !important;
+  line-height: 1.4 !important;
+  text-align: center !important;
+  padding: 0 1rem !important;
+}
+
+.success-alert .alert-button-group {
+  padding: 1rem 1.5rem 1.5rem !important;
+  justify-content: center !important;
+}
+
+.success-alert-button {
+  --background: #28a745 !important;
+  --background-activated: #1e7e34 !important;
+  --color: #ffffff !important;
+  --border-radius: 12px !important;
+  --padding-start: 2rem !important;
+  --padding-end: 2rem !important;
+  --padding-top: 0.8rem !important;
+  --padding-bottom: 0.8rem !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3) !important;
+  transform: translateY(0) !important;
+  transition: all 0.3s ease !important;
+}
+
+.success-alert-button:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 12px rgba(40, 167, 69, 0.4) !important;
+}
+
+/* Animación de entrada para la alerta */
+.success-alert.alert-entering .alert-wrapper {
+  animation: successSlideIn 0.4s ease-out;
+}
+
+@keyframes successSlideIn {
+  from {
+    transform: translateY(-20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .form-card {
+    padding: 1.5rem 1rem;
+    margin: 1rem;
+  }
+  
+  .flex-row {
+    flex-direction: column;
+  }
+  
+  .success-alert {
+    --width: 280px;
+  }
+}

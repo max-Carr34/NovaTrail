@@ -1,0 +1,218 @@
+/* Base styles for Ionic content and typography */
+ion-content {
+    --background: #f0f5fa; /* Light blue-gray background for contrast */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1c2633;
+    /* --- IMPORTANT CENTERING CHANGES START HERE --- */
+    display: flex; /* Make ion-content itself a flex container */
+    justify-content: center; /* Center its direct children horizontally */
+    align-items: center; /* Center its direct children vertically */
+    height: 100%; /* Ensure ion-content takes the full height of its parent (usually the viewport) */
+    width: 100%; /* Ensure ion-content takes the full width */
+    padding: 0; /* Remove any default padding from ion-content that might interfere */
+    /* --- IMPORTANT CENTERING CHANGES END HERE --- */
+}
+
+/* New wrapper div to contain and center the .contact-container */
+.center-wrapper {
+    display: flex; /* Make this wrapper a flex container */
+    justify-content: center; /* Center its child (.contact-container) horizontally */
+    align-items: center; /* Center its child (.contact-container) vertically */
+    width: 100%; /* Make it take the full width of ion-content */
+    height: 100%; /* Make it take the full height of ion-content */
+    overflow: auto; /* Allow this wrapper to scroll if the content inside .contact-container exceeds its height */
+    padding: 20px 0; /* Add some vertical padding to ensure space around the centered container */
+    box-sizing: border-box; /* Include padding in the element's total dimensions */
+}
+
+
+/* Main content container (the white box from your image) */
+.contact-container {
+    width: 70%; /* Responsive width */
+    max-width: 600px; /* Max width to prevent it from becoming too wide on large screens */
+    max-height: 90vh; /* Max height to fit within viewport, allowing internal scroll */
+    background: #fff;
+    padding: 16px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(34, 102, 204, 0.12);
+
+    /* Internal flex for content arrangement (sections stacked vertically) */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Content starts from the top within the container */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows max-height */
+
+    /* margin: auto; is no longer needed here as the parent .center-wrapper is handling centering */
+}
+
+/* Header (Toolbar) styling */
+ion-toolbar {
+    --background: #2266cc; /* Elegant blue */
+    --color: #ffffff; /* White text */
+    box-shadow: 0 3px 8px rgba(34, 102, 204, 0.25); /* Subtle shadow for depth */
+    font-weight: 600;
+    font-size: 1.25rem;
+    --ion-toolbar-padding-start: 14px;
+    --ion-toolbar-padding-end: 14px;
+}
+
+ion-toolbar ion-title {
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+/* Back button styling */
+ion-button[fill="clear"] {
+    color: rgba(255, 255, 255, 0.85); /* Slightly transparent white */
+    --background-focused: transparent;
+    --background-hover: rgba(255, 255, 255, 0.15); /* Light hover effect */
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+ion-button[fill="clear"]:hover,
+ion-button[fill="clear"]:focus {
+    color: #d4e4ff; /* Lighter blue on hover/focus */
+    background-color: rgba(255, 255, 255, 0.25); /* More visible hover background */
+}
+
+/* Spinner styling (for loading state) */
+ion-spinner.ion-margin-auto {
+    display: block; /* Ensure it's a block for margin:auto to work */
+    margin: 70px auto; /* Centered horizontally with top/bottom margin */
+    color: #2266cc; /* Matching blue color */
+}
+
+/* Error message styling */
+.error-message {
+    color: #b00020; /* Red color for errors */
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 45px 0;
+    letter-spacing: 0.02em;
+    text-align: center;
+}
+
+/* Section titles (Administradores, Staff) */
+h2 {
+    font-size: 1.35rem;
+    color: #134a8f; /* Darker blue for headings */
+    margin: 28px 0 14px 10px; /* Spacing */
+    font-weight: 700;
+    border-bottom: 3px solid #2266cc; /* Underline effect */
+    padding-bottom: 6px;
+    letter-spacing: 0.04em;
+}
+
+/* Contact lists container */
+ion-list {
+    background: #f4f9ff; /* Light blue background for the list */
+    border-radius: 16px;
+    padding-top: 10px;
+    box-shadow: 0 5px 18px rgba(34, 102, 204, 0.12); /* Subtle shadow for the list */
+}
+
+/* Individual clickable contact items */
+ion-item.button {
+    --background: #fff; /* White background for each item */
+    margin: 10px 14px; /* Spacing around items */
+    border-radius: 16px;
+    box-shadow: 0 3px 10px rgba(34, 102, 204, 0.12); /* Shadow for items */
+    transition: box-shadow 0.3s ease, background-color 0.25s ease; /* Smooth transitions */
+    cursor: pointer; /* Indicate clickability */
+    align-items: center; /* Vertically align content within the item */
+}
+
+ion-item.button:hover,
+ion-item.button:focus {
+    box-shadow: 0 10px 26px rgba(34, 102, 204, 0.25); /* Enhanced shadow on hover/focus */
+    background-color: #e3f0ff; /* Light blue background on hover/focus */
+}
+
+/* Avatar (user icon) styling */
+ion-avatar {
+    background: #d2e5ff; /* Light blue background for avatar circle */
+    border-radius: 50%; /* Make it round */
+    width: 50px;
+    height: 50px;
+    margin-right: 18px; /* Space between avatar and text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ion-avatar ion-icon {
+    color: #2266cc; /* Blue icon color */
+    font-size: 2.6rem;
+}
+
+/* User label (name and role) styling */
+ion-label h3 {
+    margin: 0 0 3px 0;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #134a8f; /* Darker blue for name */
+}
+
+ion-label p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #3f536f; /* Slightly lighter gray for role */
+    font-weight: 500;
+    text-transform: capitalize; /* Capitalize first letter of role */
+}
+
+/* Message for no available contacts */
+.ion-text-center p {
+    font-size: 1.12rem;
+    color: #8a97ac; /* Muted gray for informational text */
+    margin-top: 52px;
+    font-weight: 500;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+    .contact-container {
+        width: 90%; /* Wider on smaller screens */
+        max-height: 95vh; /* Taller on smaller screens */
+        padding: 12px;
+    }
+
+    ion-list {
+        padding-top: 6px;
+        border-radius: 14px;
+    }
+
+    ion-item.button {
+        margin: 8px 10px;
+    }
+
+    ion-avatar {
+        width: 44px;
+        height: 44px;
+        margin-right: 14px;
+    }
+
+    ion-avatar ion-icon {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.22rem;
+    }
+
+    ion-label h3 {
+        font-size: 1.05rem;
+    }
+
+    ion-label p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Alternative style for items with a border and light shadow (if used) */
+.round-item {
+    border-radius: 12px;
+    margin-bottom: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}

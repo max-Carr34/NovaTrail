@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar class="admin-toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" fill="clear">
+        <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="admin-title">
+      <ion-icon name="people-outline" class="title-icon"></ion-icon>
+      Registered Users
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding admin-content">
+  <div class="stats-container" *ngIf="parents.length">
+    <div class="stat-card">
+      <ion-icon name="person-outline" class="stat-icon"></ion-icon>
+      <div class="stat-content">
+        <h3>{{ parents.length }}</h3>
+        <p>Total Users</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <ion-icon name="people-outline" class="stat-icon"></ion-icon>
+      <div class="stat-content">
+        <h3>{{ totalChildrenCount }}</h3>
+        <p>Registered Children</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="users-container" *ngIf="parents.length; else noData">
+    <h2 class="section-title">User List</h2>
+    <div class="users-grid">
+      <div class="user-card" *ngFor="let parent of parents; let i = index">
+        <div class="user-header">
+          <div class="user-avatar">
+            <ion-icon name="person-circle-outline"></ion-icon>
+          </div>
+          <div class="user-status active">
+            <ion-icon name="checkmark-circle"></ion-icon>
+          </div>
+        </div>
+        <div class="user-info">
+          <h3 class="user-name">{{ parent.nombre }}</h3>
+          <p class="user-email">{{ parent.correo }}</p>
+          <div class="user-stats">
+            <div class="stat-item">
+              <ion-icon name="people-outline"></ion-icon>
+              <span>{{ childrenCountMap[parent.id] || 0 }} child(ren)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <div class="no-data-container">
+      <ion-icon name="people-outline" class="no-data-icon"></ion-icon>
+      <h2>No registered users</h2>
+      <p>When users register, they will appear here.</p>
+    </div>
+  </ng-template>
+</ion-content>

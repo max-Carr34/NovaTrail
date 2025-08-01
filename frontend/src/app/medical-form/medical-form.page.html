@@ -1,0 +1,285 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" fill="clear">
+        <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ isEditMode ? 'Edit Medical Record' : 'Register Medical Record' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-container">
+  <div class="form-card">
+    <!-- Form Header -->
+    <div class="form-header">
+      <ion-icon name="medical" class="header-icon"></ion-icon>
+      <h1 class="header-title">{{ isEditMode ? 'Edit Medical Record' : 'New Medical Record' }}</h1>
+      <p class="header-subtitle">Please complete the child's relevant medical information</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- Section: Disabilities -->
+      <div class="medical-section">
+        <div class="section-title">
+          <ion-icon name="accessibility" class="disability-icon"></ion-icon>
+          <span>Disabilities</span>
+        </div>
+        
+        <div class="field-group">
+          <ion-item class="medical-item toggle-item">
+            <ion-label>Does the child have any physical or mental disabilities?</ion-label>
+            <ion-toggle formControlName="has_disability" slot="end"></ion-toggle>
+          </ion-item>
+          
+          <ion-item class="medical-item conditional-item" *ngIf="f['has_disability'].value">
+            <ion-label position="stacked">Please describe the disability</ion-label>
+            <ion-textarea 
+              formControlName="disability_description" 
+              placeholder="Provide details about the child's disability">
+            </ion-textarea>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Section: Treatments -->
+      <div class="medical-section">
+        <div class="section-title">
+          <ion-icon name="medical-outline" class="treatment-icon"></ion-icon>
+          <span>Medical Treatments</span>
+        </div>
+        
+        <div class="field-group">
+          <ion-item class="medical-item toggle-item">
+            <ion-label>Does the child require any ongoing medical treatment?</ion-label>
+            <ion-toggle formControlName="requires_treatment" slot="end"></ion-toggle>
+          </ion-item>
+          
+          <ion-item class="medical-item conditional-item" *ngIf="f['requires_treatment'].value">
+            <ion-label position="stacked">Please describe the treatment</ion-label>
+            <ion-textarea 
+              formControlName="treatment_description" 
+              placeholder="Detail the ongoing medical treatment">
+            </ion-textarea>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Section: Medications -->
+      <div class="medical-section">
+        <div class="section-title">
+          <ion-icon name="medical-outline" class="medication-icon"></ion-icon>
+          <span>Medications</span>
+        </div>
+        
+        <div class="field-group">
+          <ion-item class="medical-item">
+            <ion-label position="stacked">Current medications and their purpose</ion-label>
+            <ion-textarea 
+              formControlName="current_medications"
+              placeholder="List the child's current medications and what they are for">
+            </ion-textarea>
+          </ion-item>
+          
+          <ion-item class="medical-item toggle-item">
+            <ion-label>Is the child allergic to any medications?</ion-label>
+            <ion-toggle formControlName="medication_allergies" slot="end"></ion-toggle>
+          </ion-item>
+          
+          <ion-item class="medical-item conditional-item" *ngIf="f['medication_allergies'].value">
+            <ion-label position="stacked">List medications causing allergy</ion-label>
+            <ion-textarea 
+              formControlName="medication_allergies_details" 
+              placeholder="List any medications that cause allergies">
+            </ion-textarea>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Section: Hospitalizations -->
+      <div class="medical-section">
+        <div class="section-title">
+          <ion-icon name="business" class="hospital-icon"></ion-icon>
+          <span>Hospitalizations</span>
+        </div>
+        
+        <div class="field-group">
+          <ion-item class="medical-item toggle-item">
+            <ion-label>Has the child been hospitalized before?</ion-label>
+            <ion-toggle formControlName="was_hospitalized" slot="end"></ion-toggle>
+          </ion-item>
+          
+          <ion-item class="medical-item conditional-item" *ngIf="f['was_hospitalized'].value">
+            <ion-label position="stacked">Hospitalization details</ion-label>
+            <ion-textarea 
+              formControlName="hospitalization_details" 
+              placeholder="When, why, and where was the child hospitalized">
+            </ion-textarea>
+          </ion-item>
+          
+          <ion-item class="medical-item toggle-item">
+            <ion-label>Was the child transported by ambulance?</ion-label>
+            <ion-toggle formControlName="ambulance_transport" slot="end"></ion-toggle>
+          </ion-item>
+          
+          <ion-item class="medical-item conditional-item" *ngIf="f['ambulance_transport'].value">
+            <ion-label position="stacked">Transport details</ion-label>
+            <ion-textarea 
+              formControlName="ambulance_details" 
+              placeholder="When and why was the child transported by ambulance">
+            </ion-textarea>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Section: Surgeries -->
+      <div class="medical-section">
+        <div class="section-title">
+          <ion-icon name="cut" class="surgery-icon"></ion-icon>
+          <span>Surgeries</span>
+        </div>
+        
+        <div class="field-group">
+          <ion-item class="medical-item toggle-item">
+            <ion-label>Has the child had any surgeries?</ion-label>
+            <ion-toggle formControlName="surgery_recommended" slot="end"></ion-toggle>
+          </ion-item>
+          
+          <ion-item class="medical-item conditional-item" *ngIf="f['surgery_recommended'].value">
+            <ion-label position="stacked">Surgery details</ion-label>
+            <ion-textarea 
+              formControlName="surgery_details" 
+              placeholder="Type of surgery, when it was recommended, current status">
+            </ion-textarea>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Section: Consultations and Treatments -->
+      <div class="medical-section">
+        <div class="section-title">
+          <ion-icon name="chatbubbles" class="consultation-icon"></ion-icon>
+          <span>Medical Consultations</span>
+        </div>
+        
+        <div class="field-group">
+          <ion-item class="medical-item toggle-item">
+            <ion-label>Has the child received psychological treatment?</ion-label>
+            <ion-toggle formControlName="psychological_treatment" slot="end"></ion-toggle>
+          </ion-item>
+          
+          <ion-item class="medical-item toggle-item">
+            <ion-label>Has the child consulted a doctor recently?</ion-label>
+            <ion-toggle formControlName="recent_medical_consult" slot="end"></ion-toggle>
+          </ion-item>
+          
+          <ion-item class="medical-item conditional-item" *ngIf="f['recent_medical_consult'].value">
+            <ion-label position="stacked">Consultation details</ion-label>
+            <ion-textarea 
+              formControlName="medical_consult_details" 
+              placeholder="When, specialist, and reason for consultation">
+            </ion-textarea>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Section: Health Conditions -->
+      <div class="medical-section">
+        <div class="section-title">
+          <ion-icon name="fitness" class="limitations-icon"></ion-icon>
+          <span>Health Conditions</span>
+        </div>
+        
+        <div class="field-group">
+          <ion-item class="medical-item">
+            <ion-label position="stacked">Recent illnesses, pains, or injuries</ion-label>
+            <ion-textarea 
+              formControlName="recent_conditions"
+              placeholder="Describe any recent health issues the child has experienced">
+            </ion-textarea>
+          </ion-item>
+          
+          <ion-item class="medical-item toggle-item">
+            <ion-label>Does the child have any physical limitations?</ion-label>
+            <ion-toggle formControlName="physical_limitations" slot="end"></ion-toggle>
+          </ion-item>
+          
+          <ion-item class="medical-item conditional-item" *ngIf="f['physical_limitations'].value">
+            <ion-label position="stacked">Please describe the limitations</ion-label>
+            <ion-textarea 
+              formControlName="physical_limitations_details" 
+              placeholder="Detail any physical limitations the child has">
+            </ion-textarea>
+          </ion-item>
+          
+          <ion-item class="medical-item">
+            <ion-label position="stacked">Other relevant medical conditions</ion-label>
+            <ion-textarea 
+              formControlName="other_conditions"
+              placeholder="Any other important medical conditions">
+            </ion-textarea>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Section: Allergies -->
+      <div class="medical-section">
+        <div class="section-title">
+          <ion-icon name="warning" class="allergies-icon"></ion-icon>
+          <span>Allergies</span>
+        </div>
+        
+        <div class="field-group">
+          <ion-item class="medical-item">
+            <ion-label position="stacked">Known allergies and their severity</ion-label>
+            <ion-textarea 
+              formControlName="known_allergies"
+              placeholder="List any allergies (food, environmental, etc.) the child has and their severity">
+            </ion-textarea>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Section: Seizures -->
+      <div class="medical-section">
+        <div class="section-title">
+          <ion-icon name="flash" class="seizures-icon"></ion-icon>
+          <span>Seizures</span>
+        </div>
+        
+        <div class="field-group">
+          <ion-item class="medical-item toggle-item">
+            <ion-label>Has the child ever had seizures?</ion-label>
+            <ion-toggle formControlName="has_seizures" slot="end"></ion-toggle>
+          </ion-item>
+          
+          <ion-item class="medical-item conditional-item" *ngIf="f['has_seizures'].value">
+            <ion-label position="stacked">Seizure details</ion-label>
+            <ion-textarea 
+              formControlName="seizure_details" 
+              placeholder="When they occurred, frequency, possible causes">
+            </ion-textarea>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="submit-section">
+        <ion-button 
+          expand="block" 
+          type="submit" 
+          [disabled]="form.invalid"
+          class="submit-btn">
+          <ion-icon name="save" slot="start"></ion-icon>
+          {{ isEditMode ? 'Update Record' : 'Save Record' }}
+        </ion-button>
+      </div>
+    </form>
+
+    <!-- Informative Footer -->
+    <div class="form-footer">
+      <ion-icon name="shield-checkmark"></ion-icon>
+      Your child's medical information is protected and will be treated confidentially.
+    </div>
+  </div>
+</ion-content>

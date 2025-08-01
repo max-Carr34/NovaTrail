@@ -1,0 +1,75 @@
+<ion-content class="register-content">
+  <div class="register-wrapper">
+    <div class="register-card">
+      <form #form="ngForm" (ngSubmit)="registrarUsuario()" novalidate>
+
+        <ion-item class="register-item" lines="none">
+          <ion-label position="stacked" style="color: black;">Username</ion-label>
+          <ion-input
+            type="text"
+            [(ngModel)]="usuario.nombre"
+            name="nombre"
+            required
+            #nombre="ngModel">
+          </ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="nombre.invalid && nombre.touched">
+          <p class="ion-padding-start">Name required</p>
+        </ion-text>
+
+        <ion-item class="register-item" lines="none">
+          <ion-label position="stacked" style="color: black;" >Email</ion-label>
+          <ion-input
+            type="email"
+            [(ngModel)]="usuario.correo"
+            name="correo"
+            required
+            email
+            #correo="ngModel">
+          </ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="correo.invalid && correo.touched">
+          <p class="ion-padding-start">
+            {{ correo.errors?.['required'] ? 'Email required' : 'Invalid Email' }}
+          </p>
+        </ion-text>
+
+        <ion-item class="register-item" lines="none">
+          <ion-label position="stacked" style="color: black;">Password</ion-label>
+          <ion-input
+            type="password"
+            [(ngModel)]="usuario.password"
+            name="password"
+            required
+            minlength="6"
+            #password="ngModel">
+          </ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="password.invalid && password.touched">
+          <p class="ion-padding-start">
+            {{ password.errors?.['required'] ? 'Password required' : 'At least 6 characters' }}
+          </p>
+        </ion-text>
+
+        <ion-button
+          expand="block"
+          type="submit"
+          [disabled]="form.invalid"
+          class="register-btn"
+          shape="round" routerLink="/parent-panel">
+          Sign in
+        </ion-button>
+
+        <ion-button
+          expand="block"
+          fill="outline"
+          class="register-cancel-btn"
+          (click)="volverInicio()"
+          shape="round">
+          Cancel
+        </ion-button>
+
+      </form>
+    </div>
+  </div>
+</ion-content>

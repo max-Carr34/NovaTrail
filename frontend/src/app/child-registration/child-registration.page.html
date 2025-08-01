@@ -1,0 +1,178 @@
+<!-- Header -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" fill="clear">
+        <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ isEditMode ? 'Edit Child' : 'Child Registration' }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showHelpAlert = true" fill="clear">
+        <ion-icon name="help-circle-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="dialog-wrapper">
+  <div class="page-container">
+    <div class="form-card">
+
+      <!-- Hero Section -->
+      <div class="hero-section">
+        <div class="brand-logo">
+          <ion-icon name="people-outline"></ion-icon>
+        </div>
+        <h1 class="main-title">
+          {{ isEditMode ? 'Update Child Information' : 'Register Your Children' }}
+        </h1>
+        <p class="hero-subtitle">
+          {{ isEditMode ? 'Modify the details below to update the profile.' : 'Complete the form to create their profile.' }}
+        </p>
+      </div>
+
+      <!-- Form Container -->
+      <form [formGroup]="childForm" (ngSubmit)="submitForm()" class="form-container">
+
+        <!-- Personal Information -->
+        <div class="field-group">
+          <div class="group-title">
+            <ion-icon name="person-outline"></ion-icon>
+            <h3>Personal Information</h3>
+          </div>
+
+          <div class="flex-row">
+            <div class="flex-item half">
+              <ion-item class="register-item" lines="none">
+                <ion-icon name="person" slot="start"></ion-icon>
+                <ion-label position="floating">First Name</ion-label>
+                <ion-input formControlName="firstName"></ion-input>
+              </ion-item>
+            </div>
+
+            <div class="flex-item half">
+              <ion-item class="register-item" lines="none">
+                <ion-label position="floating">Last Name</ion-label>
+                <ion-input formControlName="lastName"></ion-input>
+              </ion-item>
+            </div>
+          </div>
+        </div>
+
+        <!-- Birthdate -->
+        <div class="field-group">
+          <div class="group-title">
+            <h3>Date of Birth</h3>
+          </div>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col size="4">
+                <ion-item class="register-item" lines="none">
+                  <ion-label position="stacked">Day</ion-label>
+                  <ion-select [(ngModel)]="birthDay" [ngModelOptions]="{standalone:true}" interface="popover" placeholder="--">
+                    <ion-select-option *ngFor="let day of days" [value]="day">{{ day }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="4">
+                <ion-item class="register-item" lines="none">
+                  <ion-label position="stacked">Month</ion-label>
+                  <ion-select [(ngModel)]="birthMonth" [ngModelOptions]="{standalone:true}" interface="popover" placeholder="--">
+                    <ion-select-option *ngFor="let month of months" [value]="month.value">{{ month.label }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="4">
+                <ion-item class="register-item" lines="none">
+                  <ion-label position="stacked">Year</ion-label>
+                  <ion-select [(ngModel)]="birthYear" [ngModelOptions]="{standalone:true}" interface="popover" placeholder="--">
+                    <ion-select-option *ngFor="let year of years" [value]="year">{{ year }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <!-- Gender -->
+          <div class="gender-section">
+            <div class="gender-title">
+              <ion-icon name="transgender-outline"></ion-icon>
+              Gender
+            </div>
+            <div class="gender-options">
+              <div class="gender-card" [class.selected]="childForm.get('gender')?.value === 'male'" (click)="selectGender('male')">
+                <span class="gender-emoji">👦</span>
+                <p class="gender-text">Boy</p>
+              </div>
+              <div class="gender-card" [class.selected]="childForm.get('gender')?.value === 'female'" (click)="selectGender('female')">
+                <span class="gender-emoji">👧</span>
+                <p class="gender-text">Girl</p>
+              </div>
+              <div class="gender-card" [class.selected]="childForm.get('gender')?.value === 'other'" (click)="selectGender('other')">
+                <span class="gender-emoji">🧒</span>
+                <p class="gender-text">Other</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Information -->
+        <div class="field-group">
+          <div class="group-title">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <h3>Additional Information</h3>
+          </div>
+          <h5 style="color: black;">Parent or Guardian Information</h5>
+          <ion-item class="register-item" lines="none">
+            <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+            <ion-label position="floating">Parent or Guardian Name</ion-label>
+            <ion-input formControlName="parentName"></ion-input>
+          </ion-item>
+
+          <ion-item class="register-item" lines="none">
+            <ion-icon name="call-outline" slot="start"></ion-icon>
+            <ion-label position="floating">Phone Number</ion-label>
+            <ion-input formControlName="phoneNumber" type="tel" inputmode="tel"></ion-input>
+          </ion-item>
+
+          <ion-text color="danger" *ngIf="hasError('phoneNumber')">
+            {{ getErrorMessage('phoneNumber') }}
+          </ion-text>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-section">
+          <ion-button shape="round" class="primary-btn" type="submit" [disabled]="childForm.invalid || !birthDay || !birthMonth || !birthYear">
+            {{ isEditMode ? 'Update Child' : 'Complete Sign Up' }}
+          </ion-button>
+          <ion-button shape="round" class="secondary-action" fill="outline" (click)="goBack()">
+            <ion-icon name="close" slot="start"></ion-icon>
+            Cancel
+          </ion-button>
+        </div>
+      </form>
+
+      <!-- Footer -->
+      <div class="signup-footer">
+        <p>
+          <ion-icon name="shield-checkmark-outline"></ion-icon>
+          Your information is safe and protected
+        </p>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<!-- Help Alert -->
+<ion-alert
+  [isOpen]="showHelpAlert"
+  header="Help"
+  subHeader="Registration Guide"
+  message="Please complete all fields to register your child."
+  [buttons]="['Got it']"
+  (didDismiss)="showHelpAlert = false">
+</ion-alert>

@@ -1,0 +1,98 @@
+<ion-header [translucent]="true" class="custom-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="logoutAndGoHome()" class="login-btn" shape="round" color="danger">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        Log Out
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      NOVA TRAIL
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true" class="fade-image-content">
+  <div class="background-wrapper">
+    <!-- Imagen opcional -->
+  </div>
+
+  <div class="main-content">
+    <div class="content-container">
+      <div class="welcome-section">
+        <h1>Welcome to the Admin Dashboard!</h1>
+        <p>Manage and oversee all SummerCamp operations with administrative tools!</p>
+      </div>
+
+      <div class="features-grid">
+
+        <!-- ✅ Visible para todos -->
+        <a routerLink="/child-list" class="feature-card-link">
+          <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <h3 class="feature-title">Children Management</h3>
+            <p class="feature-description">
+              View, edit, and manage all registered children in the system.
+            </p>
+          </div>
+        </a>
+
+        <!-- ✅ Solo Admin -->
+        <a routerLink="/parent-management" class="feature-card-link" *hasRole="['admin']">
+          <div class="feature-card">
+            <div class="feature-icon">👨‍👩‍👧‍👦</div>
+            <h3 class="feature-title">Parent Management</h3>
+            <p class="feature-description">
+              Manage parent accounts, permissions, and communications.
+            </p>
+          </div>
+        </a>
+
+        <!-- ✅ Visible para todos -->
+        <a routerLink="/medical-records" class="feature-card-link">
+          <div class="feature-card">
+            <div class="feature-icon">🩺</div>
+            <h3 class="feature-title">Medical Information</h3>
+            <p class="feature-description">
+              Check the medical information of all registered children.
+            </p>
+          </div>
+        </a>
+
+        <!-- ✅ Visible para todos -->
+        <a routerLink="/add-timeline-event" class="feature-card-link">
+          <div class="feature-card">
+            <div class="feature-icon">📅 ⌛</div>
+            <h3 class="feature-title">Child Timeline</h3>
+            <p class="feature-description">
+              Take daily observations to build a chronological timeline of the child’s development.
+            </p>
+          </div>
+        </a>
+
+        <!-- ✅ Visible para todos -->
+        <a routerLink="/communication-panel" class="feature-card-link">
+          <div class="feature-card">
+            <div class="feature-icon">🗒️</div>
+            <h3 class="feature-title">Communication Panel</h3>
+            <p class="feature-description">
+              Chat with the family members of all registered child and make the conection more close
+            </p>
+          </div>
+        </a>
+
+        <!-- ✅ Solo Admin -->
+        <a routerLink="/admin/system-settings" class="feature-card-link" *hasRole="['admin']">
+          <div class="feature-card">
+            <div class="feature-icon">⚙️</div>
+            <h3 class="feature-title">System Settings</h3>
+            <p class="feature-description">
+              Configure system parameters, backup settings, and preferences.
+            </p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</ion-content>

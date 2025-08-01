@@ -1,0 +1,229 @@
+/* Communication Panel Styles - Elegant Blue & White Theme */
+
+.communication-content {
+  padding: 16px;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  min-height: 100vh;
+}
+
+/* Search Section */
+.search-section {
+  margin-bottom: 24px;
+  padding: 0 8px;
+}
+.chat-button {
+  background-color: #007bff; 
+  color: #f9f9f9;            
+  border-radius: 20px;        
+  width: 100%;                
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;               
+}
+
+.search-section ion-searchbar {
+  --background: #ffffff;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);
+  --color: #1e293b;
+  --placeholder-color: #64748b;
+  --icon-color: #3b82f6;
+  margin: 0;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: block;
+  margin: 40px auto;
+  --color: #3b82f6;
+}
+
+/* Users Container */
+.users-container {
+  margin-bottom: 32px;
+}
+
+/* List Headers */
+.users-header {
+  background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
+  color: #ffffff;
+  padding: 16px 20px;
+  margin: 0 0 8px 0;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+}
+
+.users-header ion-label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+/* List Styling */
+ion-list {
+  background: #ffffff;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+/* User Items */
+.user-item {
+  --background: #ffffff;
+  --border-color: #e2e8f0;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --min-height: 80px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.user-item:hover {
+  --background: #f1f5f9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.1);
+}
+
+.user-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #3b82f6, #1d4ed8);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.user-item:hover::before {
+  opacity: 1;
+}
+
+/* Avatar Styling */
+.user-avatar {
+  --size: 48px;
+  margin-right: 16px;
+}
+
+.user-avatar ion-icon {
+  color: #3b82f6;
+  font-size: 48px;
+}
+
+/* User Info */
+.user-info h2 {
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  letter-spacing: 0.3px;
+}
+
+.user-email {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin: 2px 0;
+  font-weight: 400;
+}
+
+.children-count {
+  color: #3b82f6;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 2px 0;
+}
+
+/* Admin and Staff Icons */
+ion-item ion-avatar ion-icon[name="shield-checkmark-outline"] {
+  color: #dc2626;
+}
+
+ion-item ion-avatar ion-icon[name="person-outline"] {
+  color: #059669;
+}
+
+/* No Data Container */
+.no-data-container {
+  text-align: center;
+  padding: 60px 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+}
+
+.no-data-icon {
+  font-size: 64px;
+  color: #cbd5e1;
+  margin-bottom: 16px;
+}
+
+.no-data-text {
+  color: #64748b;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Header Styling */
+ion-header ion-toolbar {
+  --background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
+  --color: #ffffff;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+ion-header ion-title {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.title-icon {
+  margin-right: 8px;
+  font-size: 1.3rem;
+  vertical-align: middle;
+}
+
+ion-header ion-button {
+  --color: #ffffff;
+}
+
+ion-header ion-button:hover {
+  --background: rgba(255, 255, 255, 0.1);
+}
+
+/* Content Padding */
+ion-content {
+  --background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .communication-content {
+    padding: 12px;
+  }
+  
+  .users-header {
+    padding: 12px 16px;
+  }
+  
+  .users-header ion-label {
+    font-size: 1rem;
+  }
+  
+  .user-item {
+    --min-height: 70px;
+    --padding-start: 16px;
+    --padding-end: 16px;
+  }
+  
+  .user-info h2 {
+    font-size: 1rem;
+  }
+  
+  .user-email {
+    font-size: 0.85rem;
+  }
+} 

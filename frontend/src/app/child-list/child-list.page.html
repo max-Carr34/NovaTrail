@@ -1,0 +1,145 @@
+<ion-header class="lista-header">
+  <ion-toolbar>
+    <!-- Botón atrás -->
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" fill="clear">
+        <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Título -->
+    <ion-title>Children List</ion-title>
+
+    <!-- Botón Refresh -->
+    <ion-buttons slot="end">
+      <ion-button (click)="loadChildren()" class="boton-refresh-header">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Pull to refresh -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Título Principal -->
+  <div class="titulo-principal">
+    <h1>Child Registration</h1>
+    <p>Manage and track children's information</p>
+  </div>
+
+  <!-- Contenedor Principal -->
+  <div class="contenedor-principal">
+    <!-- Sección de controles -->
+    <div class="seccion-controles">
+      <!-- Botón Add Child solo para admin/staff -->
+      <ion-button 
+        color="primary" 
+        shape="round" 
+        (click)="addChild()" 
+        *hasRole="['admin', 'staff']"
+        class="boton-agregar">
+        <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+        Add Child
+      </ion-button>
+
+      <!-- Contador de niños -->
+      <div class="contador-ninos" *ngIf="children.length > 0">
+        <ion-icon name="people-outline"></ion-icon>
+        <span>{{ children.length }} child{{ children.length !== 1 ? 'ren' : '' }} registered</span>
+      </div>
+      
+      <!-- Botón actualizar -->
+      <ion-button 
+        fill="solid" 
+        class="boton-actualizar" 
+        (click)="loadChildren()"
+        [disabled]="isLoading">
+        <ion-icon name="refresh-outline" slot="start"></ion-icon>
+        Refresh
+      </ion-button>
+    </div>
+
+    <!-- Grid de tarjetas -->
+    <div class="grid-tarjetas" *ngIf="children.length > 0">
+      <div class="tarjeta-nino" 
+           *ngFor="let child of children; let i = index" 
+           [style.animation-delay]="(i * 0.1) + 's'">
+        
+        <!-- Cabecera con nombre y acciones -->
+        <div class="cabecera-tarjeta">
+          <div class="info-nombre">
+            <div class="avatar-iniciales">
+              {{ child.first_name.charAt(0) }}{{ child.last_name.charAt(0) }}
+            </div>
+            <div class="datos-nombre">
+              <h2>{{ child.first_name }} {{ child.last_name }}</h2>
+              <span class="etiqueta-genero">{{ child.gender }}</span>
+            </div>
+          </div>
+
+          <!-- Botones de acción solo para admin/staff -->
+          <div class="acciones-tarjeta" *hasRole="['admin', 'staff']">
+            <ion-button fill="clear" color="primary" size="small" (click)="editChild(child)">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" color="danger" size="small" (click)="confirmDelete(child.id)">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+
+        <!-- Detalles del niño con clases específicas restauradas -->
+        <div class="detalles-nino">
+          <div class="item-detalle">
+            <div class="icono-detalle icono-nacimiento">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+            <div class="contenido-detalle">
+              <span class="etiqueta-detalle">Birthdate</span>
+              <span class="valor-detalle">{{ child.birth_day }}/{{ child.birth_month }}/{{ child.birth_year }}</span>
+            </div>
+          </div>
+
+          <div class="item-detalle">
+            <div class="icono-detalle icono-padre">
+              <ion-icon name="person-outline"></ion-icon>
+            </div>
+            <div class="contenido-detalle">
+              <span class="etiqueta-detalle">Parent/Guardian</span>
+              <span class="valor-detalle">{{ child.parent_name }}</span>
+            </div>
+          </div>
+
+          <div class="item-detalle">
+            <div class="icono-detalle icono-telefono">
+              <ion-icon name="call-outline"></ion-icon>
+            </div>
+            <div class="contenido-detalle">
+              <span class="etiqueta-detalle">Phone</span>
+              <span class="valor-detalle">{{ child.phone_number }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estado vacío -->
+    <div class="estado-vacio" *ngIf="!isLoading && children.length === 0">
+      <div class="icono-vacio">
+        <ion-icon name="people-outline"></ion-icon>
+      </div>
+      <h3>No children registered</h3>
+      <p>No children have been added to the system yet.</p>
+    </div>
+
+    <!-- Estado de carga -->
+    <div class="estado-carga" *ngIf="isLoading">
+      <ion-spinner name="dots" color="medium"></ion-spinner>
+      <p>Loading data...</p>
+    </div>
+  </div>
+</ion-content>

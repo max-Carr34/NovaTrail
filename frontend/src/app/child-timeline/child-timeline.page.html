@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" fill="clear">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Personal Timeline</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding timeline-container">
+
+  <!-- Loader -->
+  <div *ngIf="isLoading" class="loading-state ion-text-center">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Loading Events...</p>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="errorMessage" class="error-state ion-text-center ion-padding">
+    <ion-icon name="alert-circle-outline" size="large" color="danger"></ion-icon>
+    <p class="error-message">{{ errorMessage }}</p>
+    <ion-button expand="block" fill="outline" color="danger" (click)="retryLoad()" class="retry-button">
+      Retry
+    </ion-button>
+  </div>
+
+  <!-- Timeline -->
+  <div *ngIf="!isLoading && !errorMessage && events.length > 0" class="timeline">
+    <div class="timeline-event" *ngFor="let event of events; let i = index" [attr.data-index]="i">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-content">
+        <h3 class="event-title">{{ event.title }}</h3>
+        <p class="event-description">{{ event.description }}</p>
+        <small class="event-date">{{ event.event_date | date: 'medium' }}</small>
+        <ion-button
+          fill="outline"
+          size="small"
+          color="primary"
+          (click)="redirectToChat(event)"
+          class="message-button">
+          Send Message
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- No Events -->
+  <div *ngIf="!isLoading && !errorMessage && events.length === 0" class="empty-state ion-text-center">
+    <ion-icon name="time-outline" size="large" color="medium" class="empty-icon"></ion-icon>
+    <p class="empty-message">There´s no events for this child</p>
+  </div>
+
+</ion-content>

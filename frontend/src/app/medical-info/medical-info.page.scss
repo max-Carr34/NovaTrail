@@ -1,0 +1,278 @@
+/* General Body and Content Styling */
+ion-content {
+  --background: #ffffff; /* White background for the entire content area */
+}
+
+/* Medical Content Specifics */
+.medical-content {
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+  font-family: 'Helvetica Neue', sans-serif; /* Modern, clean font */
+  color: #333; /* Darker text for readability */
+}
+
+/* Header Section */
+.medical-header {
+  margin-bottom: 25px;
+  background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* Gradient background for the header */
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px; /* Rounded corners for the header */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  position: relative;
+  overflow: hidden; /* To contain pseudo-elements if any */
+}
+
+.medical-header .header-content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.medical-header .patient-icon {
+  font-size: 4em; /* Larger icon */
+  margin-right: 15px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.medical-header .header-info h1 {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin: 0;
+  color: #fff;
+}
+
+.medical-header .header-info .subtitle {
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 5px;
+}
+
+/* Child Selector (if multiple children) */
+.medical-header .child-selector {
+  --background: rgba(255, 255, 255, 0.15); /* Slightly transparent background */
+  --color: #fff;
+  border-radius: 8px;
+  margin-top: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.medical-header .child-selector ion-label {
+  color: #fff;
+  font-weight: 500;
+}
+
+.medical-header .child-selector ion-select {
+  color: #fff;
+  max-width: calc(100% - 100px); /* Adjust width to prevent overlap with label */
+}
+
+.medical-header .child-selector .select-text {
+  color: #fff;
+}
+
+/* Loading and Error States */
+.loading-container,
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px; /* Ensure they take up some space */
+  text-align: center;
+  color: #777;
+}
+
+.loading-container ion-spinner {
+  color: #2575fc;
+  width: 50px;
+  height: 50px;
+}
+
+.loading-container p,
+.error-container p {
+  margin-top: 15px;
+  font-size: 1.1em;
+}
+
+.error-container ion-icon {
+  color: #eb445a; /* Ionic's danger color */
+  font-size: 3.5em;
+}
+
+/* No Information Card */
+.no-info-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 20px;
+  background: #f8f8f8; /* Light gray background */
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  margin-top: 30px;
+}
+
+.no-info-card ion-icon {
+  font-size: 4em;
+  color: #a0a0a0;
+  margin-bottom: 20px;
+}
+
+.no-info-card h2 {
+  font-size: 1.5em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.no-info-card p {
+  color: #777;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.no-info-card ion-button {
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-weight: bold;
+}
+
+/* Info Cards Container */
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Space between cards */
+  margin-top: 20px;
+}
+
+/* Individual Info Card */
+.info-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Consistent shadow */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions */
+}
+
+.info-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.info-card .card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee; /* Separator for header */
+}
+
+.info-card .card-icon {
+  font-size: 2.5em;
+  margin-right: 15px;
+  width: 50px; /* Fixed width for icon container */
+  height: 50px; /* Fixed height for icon container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* Circular icons */
+  color: #fff; /* White icons */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon specific colors */
+.card-icon.disability { background: #6a11cb; }
+.card-icon.treatment { background: #2575fc; }
+.card-icon.medications { background: #4caf50; } /* Green */
+.card-icon.hospital { background: #ffc107; } /* Amber */
+.card-icon.ambulance { background: #eb445a; } /* Red */
+.card-icon.surgery { background: #9c27b0; } /* Purple */
+.card-icon.psychology { background: #00bcd4; } /* Cyan */
+.card-icon.consult { background: #795548; } /* Brown */
+.card-icon.conditions { background: #ff9800; } /* Orange */
+.card-icon.allergies { background: #f4511e; } /* Deep Orange */
+.card-icon.medication-allergy { background: #d32f2f; } /* Darker Red */
+.card-icon.limitations { background: #607d8b; } /* Blue Grey */
+.card-icon.other { background: #9e9e9e; } /* Grey */
+.card-icon.seizures { background: #c62828; } /* Even darker red for critical */
+
+.info-card .card-title h3 {
+  font-size: 1.3em;
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.info-card .status-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+/* Status badge colors */
+.status-badge.positive { background-color: #e0f7fa; color: #00bcd4; } /* Light Cyan */
+.status-badge.active { background-color: #e8f5e9; color: #4caf50; } /* Light Green */
+.status-badge.warning { background-color: #fff3e0; color: #ff9800; } /* Light Orange */
+.status-badge.emergency { background-color: #ffebee; color: #e53935; } /* Light Red */
+.status-badge.pending { background-color: #ede7f6; color: #673ab7; } /* Light Purple */
+.status-badge.caution { background-color: #eceff1; color: #607d8b; } /* Light Blue Grey */
+
+.info-card .card-content p {
+  font-size: 0.95em;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Card Importance Visual Cues */
+.info-card.normal {
+  border-left: 5px solid #00bcd4; /* Cyan border */
+}
+.info-card.important {
+  border-left: 5px solid #2575fc; /* Blue border */
+}
+.info-card.warning {
+  border-left: 5px solid #ff9800; /* Orange border */
+}
+.info-card.urgent {
+  border-left: 5px solid #eb445a; /* Red border */
+}
+
+/* Action Buttons */
+.action-buttons {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.action-buttons ion-button {
+  --border-radius: 8px;
+  --padding-start: 25px;
+  --padding-end: 25px;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  font-size: 1.1em;
+  font-weight: bold;
+  height: auto; /* Allow button height to adjust based on padding */
+}
+
+/* Back Button in Toolbar */
+ion-toolbar {
+  --background: #f8f8f8; /* Light gray toolbar background */
+  --color: #333; /* Darker text for toolbar title */
+}
+
+ion-back-button {
+  --color: #2575fc; /* Blue back button icon */
+}
+
+ion-title {
+  color: #333;
+}

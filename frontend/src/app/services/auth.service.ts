@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, tap } from 'rxjs';
 import { of } from 'rxjs';
+import { environment } from '../../environments/environment'; // ✅ Línea agregada para usar la URL del environment
 
 interface LoginResponse {
   token: string;
@@ -11,7 +12,7 @@ interface LoginResponse {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = environment.apiUrl; // ✅ Línea modificada: ahora usa la URL dinámica del environment
   private http = inject(HttpClient);
   private router = inject(Router);
 

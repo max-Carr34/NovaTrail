@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment'; 
 
-
 @Injectable({ providedIn: 'root' })
 export class CommunicationService {
   private readonly apiUrl = `${environment.apiUrl}/messages`; // ✅ URL base

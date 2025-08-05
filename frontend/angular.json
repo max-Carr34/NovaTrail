@@ -19,8 +19,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "www",
-            "index": "src/index.html",     
-            "browser": "src/main.ts",         
+            "browser": "src/main.ts",
             "polyfills": ["src/polyfills.ts"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",

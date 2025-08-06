@@ -60,8 +60,8 @@
                   "maximumError": "15mb"
                 }
               ],
-              "baseHref": "./",
-              "deployUrl": "./"
+              "baseHref": "/",
+              "deployUrl": "/"
             },
             "development": {
               "optimization": false,

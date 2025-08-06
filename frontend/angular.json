@@ -16,10 +16,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "www",
             "index": "src/index.html",
+            "main": "src/main.ts",
             "polyfills": [
               "src/polyfills.ts"
             ],
@@ -60,16 +61,16 @@
               ],
               "outputHashing": "all",
               "baseHref": "/",
-              "deployUrl": "/"
+              "deployUrl": "/",
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
-            },
-            "ci": {
-              "progress": false
             }
           },
           "defaultConfiguration": "production"

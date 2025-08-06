@@ -4,7 +4,7 @@
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
-    "start": "serve -s www",
+    "start": "ionic serve",
     "build": "ionic build --prod",
     "prebuild": "rimraf www",
     "test": "ng test",

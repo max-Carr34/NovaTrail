@@ -1,5 +1,14 @@
-staticPublishPath: www
-redirects:
-  - from: /*
-    to: /index.html
-    status: 200
+services:
+  - type: web
+    name: nova-frontend
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: www
+    pullRequestPreviewsEnabled: true
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
